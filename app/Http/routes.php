@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function() {
-	return view('welcome');
+	return view('auth/login');
 });
 
-Route::get('/home', function() {
-	return view('welcome');
+Route::get('home', function() {
+	return view('index');
 });
 
 // Authentication routes...
@@ -27,6 +27,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+Route::controllers([
+	'password' => 'Auth\PasswordController'
+]);
 
 
 Route::resource('contact', 'ContactsController');
