@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class EventsController extends Controller
 {
@@ -16,17 +17,10 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $events = Event::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $events;
+
     }
 
     /**
@@ -37,7 +31,13 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event();
+
+        $event->fill($request->all());
+
+        $event->save();
+
+        return $event;
     }
 
     /**
@@ -48,18 +48,13 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $event = Event::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        if (is_null($event)) {
+            return response()->json(['error'=>'No event found with ID '.$id], 404);
+        }
+
+        return $event;
     }
 
     /**
@@ -71,7 +66,17 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id);
+
+        if (is_null($event)) {
+            return response()->json(['error'=>'No event found with ID '.$id], 404);
+        }
+
+        $event->fill($request->all());
+
+        $event->save();
+
+        return $event;
     }
 
     /**
@@ -82,6 +87,14 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+
+        if (is_null($event)) {
+            return response()->json(['error'=>'No event found with ID '.$id], 404);
+        }
+
+        $event->delete();
+
+        return $event;
     }
 }
