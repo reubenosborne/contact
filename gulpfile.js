@@ -3,7 +3,6 @@ var clone         = require('gulp-clone')                   // used to fork a st
 var order         = require('gulp-order')                   // reorder files in stream
 var uglify        = require('gulp-uglify')                  // minify js
 var rename        = require('gulp-rename')                  // rename file
-var insert        = require('gulp-insert')                  // add text to file
 var concat        = require('gulp-concat')                  // merge files together
 var stylus        = require('gulp-stylus')                  // turn stylus into css
 var addsrc        = require('gulp-add-src')                 // mid-stream gulp.src()

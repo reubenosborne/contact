@@ -11,20 +11,17 @@
 |
 */
 
-Route::get('/', function() {
-	return view('auth/login');
-});
-
-Route::get('home', function() {
+// Home page
+Route::get('/', ['middleware' => 'auth', function() {
 	return view('index');
-});
+}]);
 
-// Authentication routes...
+// Authentication routes
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
+// Registration routes
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
@@ -32,6 +29,6 @@ Route::controllers([
 	'password' => 'Auth\PasswordController'
 ]);
 
-
-Route::resource('contact', 'ContactsController');
-Route::resource('event', 'EventsController');
+// Resources
+Route::resource('api/contact', 'ContactsController');
+Route::resource('api/event', 'EventsController');
