@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Contact;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class ContactsController extends Controller
 {
@@ -16,17 +17,10 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $contacts = Contact::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $contacts;
+
     }
 
     /**
@@ -37,7 +31,13 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contact = new Contact();
+
+        $contact->fill($request->all());
+
+        $contact->save();
+
+        return $contact;
     }
 
     /**
@@ -48,18 +48,13 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $contact = Contact::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        if (is_null($contact)) {
+            return response()->json(['error'=>'No contact found with ID '.$id], 404);
+        }
+
+        return $contact;
     }
 
     /**
@@ -71,7 +66,17 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+
+        if (is_null($contact)) {
+            return response()->json(['error'=>'No contact found with ID '.$id], 404);
+        }
+
+        $contact->fill($request->all());
+
+        $contact->save();
+
+        return $contact;
     }
 
     /**
@@ -82,6 +87,14 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+
+        if (is_null($contact)) {
+            return response()->json(['error'=>'No contact found with ID '.$id], 404);
+        }
+
+        $contact->delete();
+
+        return $contact;
     }
 }
