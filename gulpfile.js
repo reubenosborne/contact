@@ -67,7 +67,7 @@ gulp.task('css', function() {
 gulp.task('angular', function() {
 	
 	var tplCacheOpts = {
-		module: 'app.templates'
+		module: 'app.views'
 	}
 
 	var stream = gulp.src(paths.views)                      // grab all the html views
