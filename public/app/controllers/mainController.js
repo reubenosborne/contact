@@ -28,18 +28,27 @@ angular.module('app.controllers')
 	// Set Contact
 
 	$scope.setContact = function(contact) {
-		console.log(contact);
 
 		$scope.selectedContact = contact;
+
 	}
 
 
 
 	// Delete Contact
 
-	$scope.deleteContact = function(selectedContact) {
-		
+	$scope.deleteContact = function() {
+
+		$scope.selectedContact.$delete(function() {
+
+			$scope.allContacts = _.reject($scope.allContacts, function(contact) {
+				return contact.id === $scope.selectedContact.id;
+			})
+
+			$scope.selectedContact = undefined;
+
+		});
+
 	}
 
 })
-
