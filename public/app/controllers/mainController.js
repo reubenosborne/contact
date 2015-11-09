@@ -2,26 +2,11 @@ angular.module('app.controllers')
 
 .controller('mainController', function($scope, $http, Contact) {
 
+
+
 	// Load Contacts
 
 	$scope.allContacts = Contact.query();
-
-
-
-	// Add Contact
-
-	$scope.addContact = function () {
-
-		var contact = new Contact(); // Create new contact
-
-		contact.name = $scope.newContact; // Set name to the input box content
-
-		// Make a callback to handle what happens when the server responds
-		contact.$save(function() {
-			$scope.contacts.push(contact);
-		});
-
-	}
 
 
 
@@ -31,7 +16,44 @@ angular.module('app.controllers')
 
 		$scope.selectedContact = contact;
 
-	}
+	};
+
+
+
+	// Add Contact
+
+	$scope.addContact = function () {
+
+		var contact = new Contact(); // Create new contact
+
+		contact.name = $scope.newContactName; // Set name to the input box content
+
+		// Make a callback to handle what happens when the server responds
+		contact.$save(function() {
+			$scope.allContacts.push(contact);
+		});
+
+		$scope.newContactName = null;
+
+	};
+
+
+
+	// Edit Contact
+
+	$scope.editMode = false;
+
+  	$scope.editContact = function(selectedContact) {
+
+    	$scope.editMode = !$scope.editMode;
+    	
+    	var contact = Contact.get({ id: selectedContact.id });
+    	
+    	contact.email = $scope.selectedContact.email;
+
+    	$scope.selectedContact.$update();
+
+  	};
 
 
 
@@ -48,7 +70,6 @@ angular.module('app.controllers')
 			$scope.selectedContact = undefined;
 
 		});
-
-	}
+	};
 
 })

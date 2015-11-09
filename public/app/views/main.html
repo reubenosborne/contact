@@ -13,7 +13,7 @@
 		<div class="panel">
 			<form ng-submit="addContact()">
 				<label>New Contact</label>
-				<input type="text" ng-model="newContact">
+				<input type="text" ng-model="newContactName">
 				<input type="submit" value="Add" class="btn btn-default">
 			</form>
 		</div>
@@ -28,7 +28,7 @@
 
 	<div class="panel-contacts">
 
-		<div class="contact-card" ng-repeat="contact in allContacts" ng-click="setContact(contact)">
+		<div class="panel contact-card" ng-repeat="contact in allContacts" ng-click="setContact(contact)">
 
 			<h3>{{ contact.name }}</h3>
 			<p>Email: {{ contact.email }}</p>
@@ -49,23 +49,29 @@
 
 		<!-- Info Dialogue -->
 
-		<h1 ng-if="!selectedContact">Choose contact</h1>
+		<h1 ng-if="!selectedContact">Choose a contact</h1>
 
 		<!-- Contact Info -->
 
 		<div class="selected-contact" ng-if="selectedContact">
 
 			<h3>{{ selectedContact.name }}</h3>
-			<p>Email: {{ selectedContact.email }}</p>
+			
+			<!-- Email -->
+
+			<p ng-if="!editMode">Email: {{ selectedContact.email }}</p>
+			<label ng-if="editMode">Email: </label>
+			<input type="text" ng-if="editMode" value="{{ selectedContact.email }}" ng-model="selectedContact.email">
+
 			<p>Phone: {{ selectedContact.landline }}</p>
 
 			<!-- Edit Button -->
 
-			<button class="btn btn-info" ng-click="editContact(selectedContact)">Edit</button>
+			<div class="contact-control contact-edit" ng-click="editContact(selectedContact)"><i class="fa fa-pencil fa-2x"></i></div>
 
 			<!-- Delete Button -->
 
-			<button class="btn btn-danger" ng-click="deleteContact(selectedContact)">Delete</button>
+			<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)" ng-if="editMode"><i class="fa fa-times fa-2x"></div>
 
 		</div>
 
