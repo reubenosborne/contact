@@ -1,3 +1,34 @@
-<div class="container">
-	<h1>{{ success }}</h1>
+<div class="panels">
+	
+	<div class="panel-one">
+
+
+
+	</div>
+
+
+	<div class="panel-two">
+
+
+		<div class="panel">
+			<label>New Contact</label>
+			<input type="text" ng-model="newContact">
+			<a href="/" class="btn btn-default" ng-click="addContact()">Add</a>
+		</div>
+
+		<ul>
+			<li ng-repeat="contact in contacts">{{ contact.name }}</li>
+		</ul>
+
+	</div>
+
+
+	<div class="panel-three">
+	
+		
+
+	</div>
+
+
+
 </div>

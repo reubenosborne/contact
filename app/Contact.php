@@ -9,5 +9,5 @@ class Contact extends Model
 {
 	use SoftDeletes;
 
-    public $fillable = ['firstname', 'lastname', 'email', 'landline'];
+    public $fillable = ['name', 'email', 'landline'];
 }

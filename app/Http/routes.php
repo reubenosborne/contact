@@ -31,4 +31,3 @@ Route::controllers([
 
 // Resources
 Route::resource('api/contact', 'ContactsController');
-Route::resource('api/event', 'EventsController');
