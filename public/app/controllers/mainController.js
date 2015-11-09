@@ -1,32 +1,45 @@
 angular.module('app.controllers')
 
-.controller('mainController', function($scope, $http) {
+.controller('mainController', function($scope, $http, Contact) {
 
-	$http({
-  		method: 'GET',
-  		url: '/api/contact'
-	}).then(function successCallback(response) {
-	    $scope.contacts = response.data;
-  	}, function errorCallback(response) {
-	    console.log(response);
-  	});
+	// Load Contacts
 
-	$scope.newContact = '';
+	$scope.allContacts = Contact.query();
 
-	function addContact($scope) {
-		$http({
-		    url: '/api/contact',
-		    method: "POST",
-		    data: { 'name' : $scope.newContact }
-		})
-		.then(function(response) {
-			$scope.contacts = response.data;
-			$scope.newContact = ''
-		}, 
-		function(response) {
-			console.log(response);
+
+
+	// Add Contact
+
+	$scope.addContact = function () {
+
+		var contact = new Contact(); // Create new contact
+
+		contact.name = $scope.newContact; // Set name to the input box content
+
+		// Make a callback to handle what happens when the server responds
+		contact.$save(function() {
+			$scope.contacts.push(contact);
 		});
-}
+
+	}
+
+
+
+	// Set Contact
+
+	$scope.setContact = function(contact) {
+		console.log(contact);
+
+		$scope.selectedContact = contact;
+	}
+
+
+
+	// Delete Contact
+
+	$scope.deleteContact = function(selectedContact) {
+		
+	}
 
 })
 

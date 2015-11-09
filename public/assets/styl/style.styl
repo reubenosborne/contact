@@ -1,30 +1,35 @@
+.app-container
+	display flex
+	flex-direction row
+	height 100vh
+
 .panel
 	padding .2em
 
-.panels
-	display flex
-	flex-direction row
-
-.panel-one
-	background #CCC
-	width 20vw
-	height 100vh
+.panel-filters
+	background #444
+	flex 1
 	padding .4em
 	
-.panel-two
+.panel-contacts
 	background #DDD
-	width 32vw
-	height 100vh
+	flex 2
+	padding .4em
+	overflow scroll
+	overflow-x hidden
+	
+.panel-info
+	background #FFF
+	flex 3
 	padding .4em
 	
-.panel-three
-	background #EEE
-	width 48vw
-	height 100vh
-	padding .4em
+.contact-card
+	border 1px solid #AAA
+	border-radius 5px
+	background rgba(255,255,255,.5)
+	padding 1em
+	margin 1em
+	cursor pointer
 	
-li
-	list-style none
-	font-size 1.5em
-	font-family lato
-	font-weight 300
+	&:hover
+		background rgba(255,255,255,.8)
