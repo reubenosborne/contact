@@ -17,9 +17,18 @@ body
 
 .panel-filters
 	flex 1
+	display flex
+	flex-direction column
+	border-right 1px solid rgba(0,0,0,.1)
 	
 .panel-filters-container
-	margin-top 25px
+	flex 1
+	
+.panel-filters-control
+	display flex
+	align-items center
+	justify-content center
+	padding 20px
 	
 // Contact Panel
 	
@@ -27,9 +36,9 @@ body
 	flex 1
 	display flex
 	flex-direction column
+	border-right 1px solid rgba(0,0,0,.1)
 	
 .panel-contacts-container
-	// margin-top 75px
 	overflow scroll
 	overflow-x hidden
 	flex 1
@@ -40,29 +49,20 @@ body
 	flex 2
 	
 .panel-info-container
-	margin-top 25px
 	padding 1em
-
-// Vertical Rule
-	
-.vertical-rule
-	height 100%
-	width 1px
-	background rgba(0,0,0,.1)
 	
 	
 // ====================================================
 // ================== Panel Header ====================
 // ====================================================
-	
+
 .panel-header
-	height 25px
+	min-height 25px
 	width 100%
 	background rgba(60, 130, 205, 1)
 	
 	display flex
 	align-items center
-	position fixed
 	
 	h1
 		padding 5px
@@ -75,28 +75,26 @@ body
 // ====================================================
 // ================= Search Contacts ==================
 // ====================================================
-		
+
 .search-contacts
-	margin 25px 0 0 0
-	padding 0
-	height 50px
+	min-height 50px
 	display flex
 	align-items center
-	// position fixed
 	background white
 	border-bottom 1px solid rgba(0,0,0,.05)
 	
 	input
 		width 100%
+		height 30px
 		padding 0 10px
 		margin 0 10px
 		border 1px solid #CCC
-		border-radius 10px
-		transition .3s
+		border-radius 20px
+		transition .5s
 		
 		&:focus
 			outline 0px
-			border 1px solid #AAA
+			border 1px solid #999
 
 
 // ====================================================
@@ -123,6 +121,10 @@ body
 	background #EEE
 	border-radius 50%
 	margin 0 10px 0 5px
+	
+	display flex
+	align-items center
+	justify-content center
 
 .contact-card-details
 	display flex
@@ -152,23 +154,22 @@ body
 	display flex
 	align-items center
 	justify-content center
-	box-shadow 2px 2px 8px rgba(0,0,0,.1)
-	position absolute
+	box-shadow 2px 2px 8px rgba(0,0,0,.2)
 	color white
 	
 .contact-add
 	background #2ecc71
-	bottom 1.5em
-	left 9em
 	
 .contact-delete
-	bottom 1em
-	right 6em
+	position absolute
+	bottom 20px
+	right 85px
 	background #e74c3c
 
 .contact-edit
-	bottom 1em
-	right 1em
+	position absolute
+	bottom 20px
+	right 20px
 	background #3498db
 	
 // ====================================================

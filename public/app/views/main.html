@@ -1,11 +1,5 @@
 <div class="app-container">
 
-<!-- 
-<ng-include src="'views/panels/filters.html'"></ng-include>
-<ng-include src="'views/panels/contacts.html'"></ng-include>
-<ng-include src="'views/panels/info.html'"></ng-include> 
--->
-
 
 
 	<!-- Filters Panel -->
@@ -15,14 +9,19 @@
 		<div class="panel-header">
 			<h1>FILTERS</h1>
 		</div>
+		
+		<!-- Filters -->
+		<div class="panel-filters-container">
+			
+		</div>
 
-		<!-- Add Contact Button -->
-		<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus"></i></div>
+		<!-- Filters Control -->
+		<div class="panel-filters-control">
+			<!-- Add Contact Button -->
+			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus"></i></div>
+		</div>
 
 	</div>
-
-	<!-- Vertical Rule -->
-	<div class="vertical-rule"></div>
 
 
 
@@ -45,7 +44,7 @@
 
 		<!-- Search -->
 		<div class="search-contacts">
-			<input type="search" placeholder="&#xF002; Search for someone..." style="font-family:Arial, FontAwesome" ng-model="search"/>
+			<input type="search" placeholder="&#xF002; &nbsp;&nbsp; Search for someone..." style="font-family:Arial, FontAwesome" ng-model="search"/>
 		</div>
 
 
@@ -54,7 +53,11 @@
 
 			<div class="contact-card" ng-repeat="contact in allContacts | filter:search | orderBy: 'name'" ng-click="setContact(contact)">
 
-				<div class="contact-card-avatar"></div>
+				<div class="contact-card-avatar" ng-if="!contact.avatar">
+					{{ contact.name.charAt(0) }}
+				</div>
+
+				<div class="contact-card-avatar" ng-if="contact.avatar" back-img="contact.avatar"></div>
 			
 				<div class="contact-card-details">
 					<h3>{{ contact.name }}</h3>
@@ -66,11 +69,6 @@
 		</div>
 
 	</div>
-
-
-
-	<!-- Vertical Rule -->
-	<div class="vertical-rule"></div>
 
 
 
@@ -97,6 +95,8 @@
 
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact">
+
+				<img ng-src="{{selectedContact.avatar}}" alt="">
 			
 				<!-- Name -->
 				<label ng-if="editMode">Name:</label>

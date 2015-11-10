@@ -62,6 +62,11 @@ angular.module('app.controllers')
 
   	};
 
+
+
+
+  	// Save Contact
+
   	$scope.saveContact = function() {
   		if(!$scope.selectedContact) return
   			
