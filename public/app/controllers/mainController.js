@@ -10,6 +10,7 @@ angular.module('app.controllers')
 
 
 
+
 	// Set Contact
 
 	$scope.setContact = function(contact) {
@@ -19,6 +20,7 @@ angular.module('app.controllers')
 		$scope.editMode = false;
 
 	};
+
 
 
 
@@ -32,7 +34,7 @@ angular.module('app.controllers')
 
 		$scope.editMode = true;
 
-		contact.name = $scope.newContactName; // Set name to the input box content
+		$scope.selectedContact.name = 'New Contact'; // Set name to the input box content
 
 		// Make a callback to handle what happens when the server responds
 		contact.$save(function() {
@@ -40,6 +42,7 @@ angular.module('app.controllers')
 		});
 
 	};
+
 
 
 
@@ -65,6 +68,7 @@ angular.module('app.controllers')
 
 
 
+
 	// Delete Contact
 
 	$scope.deleteContact = function() {
@@ -76,7 +80,7 @@ angular.module('app.controllers')
 			$scope.selectedContact.$delete(function() {
 
 				$scope.allContacts = _.reject($scope.allContacts, function(contact) {
-				return contact.id === $scope.selectedContact.id;
+					return contact.id === $scope.selectedContact.id;
 				})
 
 				$scope.selectedContact = undefined;

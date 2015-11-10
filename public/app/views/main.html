@@ -100,7 +100,10 @@
 			<div class="selected-contact" ng-if="selectedContact">
 			
 				<!-- Name -->
-				<h3>{{ selectedContact.name }}</h3>
+				<h3 ng-if="!editMode">{{ selectedContact.name }}</h3>
+				<input type="text" ng-if="editMode" value="{{ selectedContact.name }}" ng-model="selectedContact.name">
+
+				<br>
 				
 				<!-- Email -->
 				<label>Email:</label>
@@ -120,7 +123,7 @@
 			
 				<!-- Delete Button -->
 			
-				<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)" ng-if="editMode"><i class="fa fa-times fa-2x"></i></div>
+				<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)"><i class="fa fa-times fa-2x"></i></div>
 			
 			</div>
 		</div>
