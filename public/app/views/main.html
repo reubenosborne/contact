@@ -99,15 +99,20 @@
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact">
 			
+				<!-- Name -->
 				<h3>{{ selectedContact.name }}</h3>
-				<!-- <input type="text" ng-if="editMode" value="Name" ng-model="selectedContact.name"> -->
 				
 				<!-- Email -->
-				Email:
+				<label>Email:</label>
 				<span ng-if="!editMode" ng-dblclick="editContact(selectedContact)">{{ selectedContact.email }}</span>
 				<input type="text" ng-if="editMode" value="{{ selectedContact.email }}" ng-model="selectedContact.email">
-			
-				<p>Phone: {{ selectedContact.landline }}</p>
+
+				<br>
+
+				<!-- Phone -->
+				<label>Phone:</label>
+				<span ng-if="!editMode" ng-dblclick="editContact(selectedContact)">{{ selectedContact.phone1 }}</span>
+				<input type="text" ng-if="editMode" value="{{ selectedContact.phone1 }}" ng-model="selectedContact.phone1">
 			
 				<!-- Edit Button -->
 			

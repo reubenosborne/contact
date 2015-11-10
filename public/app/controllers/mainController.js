@@ -16,6 +16,8 @@ angular.module('app.controllers')
 
 		$scope.selectedContact = contact;
 
+		$scope.editMode = false;
+
 	};
 
 
@@ -37,8 +39,6 @@ angular.module('app.controllers')
 			$scope.allContacts.push(contact);
 		});
 
-		$scope.newContactName = null;
-
 	};
 
 
@@ -53,7 +53,11 @@ angular.module('app.controllers')
     	
     	var contact = Contact.get({ id: selectedContact.id });
     	
+    	contact.name = $scope.selectedContact.name;
     	contact.email = $scope.selectedContact.email;
+    	contact.phone1 = $scope.selectedContact.phone1;
+    	contact.phone2 = $scope.selectedContact.phone2;
+    	contact.phone3 = $scope.selectedContact.phone3;
 
     	$scope.selectedContact.$update();
 
