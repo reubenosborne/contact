@@ -17,8 +17,7 @@
 		</div>
 
 		<!-- Add Contact Button -->
-		<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus"></i>
-		</div>
+		<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus"></i></div>
 
 	</div>
 
@@ -100,26 +99,27 @@
 			<div class="selected-contact" ng-if="selectedContact">
 			
 				<!-- Name -->
-				<h3 ng-if="!editMode">{{ selectedContact.name }}</h3>
-				<input type="text" ng-if="editMode" value="{{ selectedContact.name }}" ng-model="selectedContact.name">
+				<label ng-if="editMode">Name:</label>
+				<h3 ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.name }}</h3>
+				<input type="text" class="sc-name" ng-if="editMode" ng-model="selectedContact.name">
 
 				<br>
 				
 				<!-- Email -->
 				<label>Email:</label>
-				<span ng-if="!editMode" ng-dblclick="editContact(selectedContact)">{{ selectedContact.email }}</span>
-				<input type="text" ng-if="editMode" value="{{ selectedContact.email }}" ng-model="selectedContact.email">
+				<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.email }}</span>
+				<input type="text" ng-if="editMode" ng-model="selectedContact.email">
 
 				<br>
 
 				<!-- Phone -->
 				<label>Phone:</label>
-				<span ng-if="!editMode" ng-dblclick="editContact(selectedContact)">{{ selectedContact.phone1 }}</span>
-				<input type="text" ng-if="editMode" value="{{ selectedContact.phone1 }}" ng-model="selectedContact.phone1">
+				<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.phone1 }}</span>
+				<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
 			
 				<!-- Edit Button -->
 			
-				<div class="contact-control contact-edit" ng-click="editContact(selectedContact)"><i class="fa fa-pencil fa-2x"></i></div>
+				<div class="contact-control contact-edit" ng-click="editContact()"><i class="fa fa-pencil fa-2x"></i></div>
 			
 				<!-- Delete Button -->
 			

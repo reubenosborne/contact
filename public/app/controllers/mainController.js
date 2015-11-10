@@ -15,6 +15,8 @@ angular.module('app.controllers')
 
 	$scope.setContact = function(contact) {
 
+		$scope.saveContact();
+
 		$scope.selectedContact = contact;
 
 		$scope.editMode = false;
@@ -50,21 +52,27 @@ angular.module('app.controllers')
 
 	$scope.editMode = false;
 
-  	$scope.editContact = function(selectedContact) {
+  	$scope.editContact = function() {
 
     	$scope.editMode = !$scope.editMode;
-    	
-    	var contact = Contact.get({ id: selectedContact.id });
-    	
-    	contact.name = $scope.selectedContact.name;
-    	contact.email = $scope.selectedContact.email;
-    	contact.phone1 = $scope.selectedContact.phone1;
-    	contact.phone2 = $scope.selectedContact.phone2;
-    	contact.phone3 = $scope.selectedContact.phone3;
 
-    	$scope.selectedContact.$update();
+    	if(!$scope.editMode) {
+    		$scope.saveContact();
+    	}
 
   	};
+
+  	$scope.saveContact = function() {
+  		if(!$scope.selectedContact) return
+  			
+  		if($scope.selectedContact.id) {
+    		$scope.selectedContact.$update();
+    	} else {
+    		$scope.selectedContact.$save();
+    	}
+  	}
+
+
 
 
 

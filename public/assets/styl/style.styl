@@ -1,44 +1,65 @@
 body
 	font-family helvetica
 	color rgba(48, 77, 111, 1)
+	user-select none
+	overflow hidden
 
 .app-container
 	display flex
 	flex-direction row
 	height 100vh
+	
+// ====================================================
+// ================= Panel Styling ====================
+// ====================================================
 
-.panel
-	padding .5em
+// Filter Panel
+
+.panel-filters
+	flex 1
+	
+.panel-filters-container
+	margin-top 25px
+	
+// Contact Panel
+	
+.panel-contacts
+	flex 1
+	display flex
+	flex-direction column
+	
+.panel-contacts-container
+	// margin-top 75px
+	overflow scroll
+	overflow-x hidden
+	flex 1
+
+// Info Panel
+
+.panel-info
+	flex 2
+	
+.panel-info-container
+	margin-top 25px
+	padding 1em
+
+// Vertical Rule
 	
 .vertical-rule
 	height 100%
 	width 1px
 	background rgba(0,0,0,.1)
 	
-
-.panel-filters
-	flex 1
 	
-.panel-contacts
-	flex 1
-	overflow scroll
-	overflow-x hidden
-	
-.panel-contacts-container
-	margin-top 75px
-	
-.panel-info
-	flex 24em
-	
-.panel-info-container
-	padding 1em
+// ====================================================
+// ================== Panel Header ====================
+// ====================================================
 	
 .panel-header
-	padding 0
-	margin 0
-	background rgba(60, 130, 205, 1)
-	width 100%
 	height 25px
+	width 100%
+	background rgba(60, 130, 205, 1)
+	
 	display flex
 	align-items center
 	position fixed
@@ -61,7 +82,7 @@ body
 	height 50px
 	display flex
 	align-items center
-	position fixed
+	// position fixed
 	background white
 	border-bottom 1px solid rgba(0,0,0,.05)
 	
@@ -139,7 +160,6 @@ body
 	background #2ecc71
 	bottom 1.5em
 	left 9em
-
 	
 .contact-delete
 	bottom 1em
@@ -151,3 +171,10 @@ body
 	right 1em
 	background #3498db
 	
+// ====================================================
+// ================== Miscellaneous ===================
+// ====================================================
+
+.sc-name
+	height 45px
+	font-size 24px
