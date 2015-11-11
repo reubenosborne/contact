@@ -64,12 +64,11 @@ body
 	display flex
 	align-items center
 	
-	h1
-		padding 5px
-		margin 0
-		font-size 12px
-		color white
-		-webkit-font-smoothing antialiased
+	padding 0 5px
+	margin 0
+	font-size 12px
+	color white
+	-webkit-font-smoothing antialiased
 		
 
 // ====================================================
@@ -86,7 +85,7 @@ body
 	input
 		width 100%
 		height 30px
-		padding 0 10px
+		padding 0 10px 0 20px
 		margin 0 10px
 		border 1px solid #CCC
 		border-radius 20px
@@ -114,31 +113,38 @@ body
 	
 	&:hover
 		background rgba(0,0,0,.03)
+
+// .cc will hereby replace all instances of .contact-card
 		
-.contact-card-avatar
+.cc-avatar
 	min-width 40px
 	height 40px
-	background #EEE
 	border-radius 50%
 	margin 0 10px 0 5px
-	
+		
+.cc-avatar-initials
+	background #EEE
 	display flex
 	align-items center
 	justify-content center
+	
+.cc-avatar-photo
+	background-size cover
 
-.contact-card-details
+.cc-details
 	display flex
 	flex-direction column
 
 	h3
-		font-size 16px
+		font-size 15px
+		letter-spacing 1px
 		padding 2px 0
 		margin 0
 	
 	p
 		padding 0
 		margin 0
-		font-size 12px
+		font-size 13px
 		font-weight 300
 
 
@@ -171,11 +177,41 @@ body
 	bottom 20px
 	right 20px
 	background #3498db
+
+	
+// ====================================================
+// ================ Selected Contact ==================
+// ====================================================
+
+.selected-contact
+	margin 0
+
+// .sc will hereby replace .selected-contact
+
+.sc-field
+	height 30px
+	display flex
+	align-items center
+	margin 5px
+	
+	label
+		margin 0
+		padding 0 5px
+		width 100px
+		text-align right
+		
+	input
+		width 100%
+		padding 3px
+
+
+.sc-avatar
+	width 100px
+	height 100px
+	border-radius 50%
+	background-size cover
 	
 // ====================================================
 // ================== Miscellaneous ===================
 // ====================================================
 
-.sc-name
-	height 45px
-	font-size 24px

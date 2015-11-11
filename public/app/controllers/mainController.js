@@ -41,7 +41,7 @@ angular.module('app.controllers')
 		// Make a callback to handle what happens when the server responds
 		contact.$save(function() {
 			$scope.allContacts.push(contact);
-		});
+		})
 
 	};
 
@@ -71,13 +71,14 @@ angular.module('app.controllers')
   		if(!$scope.selectedContact) return
   			
   		if($scope.selectedContact.id) {
+
     		$scope.selectedContact.$update();
+
     	} else {
+
     		$scope.selectedContact.$save();
     	}
   	}
-
-
 
 
 

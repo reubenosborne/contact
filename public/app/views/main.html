@@ -7,7 +7,7 @@
 
 		<!-- Filters Header -->
 		<div class="panel-header">
-			<h1>FILTERS</h1>
+			FILTERS
 		</div>
 		
 		<!-- Filters -->
@@ -38,13 +38,13 @@
 
 		<!-- Panel Header -->
 		<div class="panel-header">
-			<h1>CONTACTS</h1>
+			CONTACTS
 		</div>
 
 
 		<!-- Search -->
 		<div class="search-contacts">
-			<input type="search" placeholder="&#xF002; &nbsp;&nbsp; Search for someone..." style="font-family:Arial, FontAwesome" ng-model="search"/>
+			<input type="search" placeholder="&#xF002; &nbsp;&nbsp; Search for anything..." style="font-family:Arial, FontAwesome" ng-model="search"/>
 		</div>
 
 
@@ -53,13 +53,13 @@
 
 			<div class="contact-card" ng-repeat="contact in allContacts | filter:search | orderBy: 'name'" ng-click="setContact(contact)">
 
-				<div class="contact-card-avatar" ng-if="!contact.avatar">
+				<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
 					{{ contact.name.charAt(0) }}
 				</div>
 
-				<div class="contact-card-avatar" ng-if="contact.avatar" back-img="contact.avatar"></div>
+				<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/{{contact.avatar}})'}"></div>
 			
-				<div class="contact-card-details">
+				<div class="cc-details">
 					<h3>{{ contact.name }}</h3>
 					<p>Business Name</p>
 				</div>
@@ -83,7 +83,7 @@
 	<div class="panel-info">
 
 		<div class="panel-header">
-			<h1>{{ selectedContact.name | uppercase }}</h1>
+			{{ selectedContact.name | uppercase }}
 		</div>
 
 
@@ -96,26 +96,52 @@
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact">
 
-				<img ng-src="{{selectedContact.avatar}}" alt="">
+				<img class="sc-avatar" ng-if="selectedContact.avatar" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}" alt="">
+
+				<br>
 			
 				<!-- Name -->
-				<label ng-if="editMode">Name:</label>
-				<h3 ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.name }}</h3>
-				<input type="text" class="sc-name" ng-if="editMode" ng-model="selectedContact.name">
+				<div class="sc-field">
+					<h3 ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.name }}</h3>
+					<input type="text" class="sc-name h3" ng-if="editMode" ng-model="selectedContact.name">
+				</div>
 
 				<br>
 				
-				<!-- Email -->
-				<label>Email:</label>
-				<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.email }}</span>
-				<input type="text" ng-if="editMode" ng-model="selectedContact.email">
-
-				<br>
+				<!-- Company -->
+				<div class="sc-field">
+					<label>Company:</label>
+					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.company }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+				</div>
 
 				<!-- Phone -->
-				<label>Phone:</label>
-				<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.phone1 }}</span>
-				<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+				<div class="sc-field">
+					<label>Phone:</label>
+					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.phone1 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+				</div>
+
+				<!-- Email -->
+				<div class="sc-field">
+					<label>Email:</label>
+					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.email }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.email">
+				</div>
+
+				<!-- Address -->
+				<div class="sc-field">
+					<label>Address:</label>
+					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.address }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.address">
+				</div>
+
+				<!-- Client Status -->
+				<div class="sc-field">
+					<label>Client Status:</label>
+					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.status }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.status">
+				</div>
 			
 				<!-- Edit Button -->
 			
