@@ -132,7 +132,7 @@
 				</div>
 
 				<!-- Phone Two -->
-				<div class="sc-field" ng-if="selectedContact.phone1">
+				<div class="sc-field" ng-if="selectedContact.phone1 && editMode | selectedContact.phone2 && !editMode">
 					<label>Phone:</label>
 					<span ng-if="!editMode">{{ selectedContact.phone2 }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
