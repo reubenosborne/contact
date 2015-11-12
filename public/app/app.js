@@ -9,6 +9,7 @@ angular.module('app.views', [])
 
 angular.module('app', [
 
+	'angularFileUpload',
 	'ngResource',
 	'ngRoute',
 

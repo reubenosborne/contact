@@ -96,7 +96,15 @@
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact" ng-dblclick="editContact()">
 
-				<img class="sc-avatar" ng-if="selectedContact.avatar" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}" alt="">
+				<div class="sc-avatar">
+					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/'+selectedContact.avatar+')'}"></div>
+
+					<div class="sc-avatar sc-avatar-photo sc-avatar-photo-edit" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}"><i class="fa fa-plus"></i></div>
+
+					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
+
+					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
+				</div>
 
 				<br>
 			
@@ -121,6 +129,20 @@
 					<label>Phone:</label>
 					<span ng-if="!editMode">{{ selectedContact.phone1 }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+				</div>
+
+				<!-- Phone Two -->
+				<div class="sc-field" ng-if="selectedContact.phone1">
+					<label>Phone:</label>
+					<span ng-if="!editMode">{{ selectedContact.phone2 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
+				</div>
+
+				<!-- Phone Three -->
+				<div class="sc-field" ng-if="selectedContact.phone2">
+					<label>Phone:</label>
+					<span ng-if="!editMode">{{ selectedContact.phone3 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
 				</div>
 
 				<!-- Email -->

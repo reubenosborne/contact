@@ -34,6 +34,7 @@ body
 	
 .panel-contacts
 	flex 1
+	min-width 250px
 	display flex
 	flex-direction column
 	border-right 1px solid rgba(0,0,0,.1)
@@ -129,6 +130,7 @@ body
 	justify-content center
 	
 .cc-avatar-photo
+	background no-repeat center center
 	background-size cover
 
 .cc-details
@@ -146,7 +148,6 @@ body
 		margin 0
 		font-size 13px
 		font-weight 300
-
 
 
 // ====================================================
@@ -226,13 +227,29 @@ body
 		padding 3px
 		font-size 24px
 		height 40px
-
+		position relative
+		top 2px
 
 .sc-avatar
 	width 100px
 	height 100px
 	border-radius 50%
+	display flex
+	align-items center
+	justify-content center
+	
+.sc-avatar-initials
+	background #EEE
+	border 1px solid #DDD
+	font-size 24px
+	
+.sc-avatar-photo
+	background no-repeat center center
 	background-size cover
+	
+.sc-avatar-photo-edit
+	opacity 0.1
+	
 	
 // ====================================================
 // ================== Miscellaneous ===================

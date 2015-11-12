@@ -27,7 +27,8 @@ var paths = {
 		'public/components/angular/angular.min.js',
 		'public/components/angular-resource/angular-resource.min.js',
 		'public/components/angular-route/angular-route.min.js',
-		'public/components/lodash/lodash.min.js'
+		'public/components/lodash/lodash.min.js',
+		'public/components/angular-file-upload/dist/angular-file-upload.min.js'
 	],
 	output: 'public/dist/'
 }
