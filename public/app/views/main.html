@@ -94,16 +94,17 @@
 			
 
 			<!-- Contact Info -->
-			<div class="selected-contact" ng-if="selectedContact">
+			<div class="selected-contact" ng-if="selectedContact" ng-dblclick="editContact()">
 
 				<img class="sc-avatar" ng-if="selectedContact.avatar" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}" alt="">
 
 				<br>
 			
 				<!-- Name -->
-				<div class="sc-field">
-					<h3 ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.name }}</h3>
-					<input type="text" class="sc-name h3" ng-if="editMode" ng-model="selectedContact.name">
+				<div class="sc-name">
+					<label></label>
+					<span ng-if="!editMode">{{ selectedContact.name }}</span>
+					<input type="text" class="sc-field" ng-if="editMode" ng-model="selectedContact.name">
 				</div>
 
 				<br>
@@ -111,35 +112,42 @@
 				<!-- Company -->
 				<div class="sc-field">
 					<label>Company:</label>
-					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.company }}</span>
+					<span ng-if="!editMode">{{ selectedContact.company }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.company">
 				</div>
 
 				<!-- Phone -->
 				<div class="sc-field">
 					<label>Phone:</label>
-					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.phone1 }}</span>
+					<span ng-if="!editMode">{{ selectedContact.phone1 }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
 				</div>
 
 				<!-- Email -->
 				<div class="sc-field">
 					<label>Email:</label>
-					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.email }}</span>
+					<span ng-if="!editMode">{{ selectedContact.email }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.email">
 				</div>
 
 				<!-- Address -->
 				<div class="sc-field">
 					<label>Address:</label>
-					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.address }}</span>
+					<span ng-if="!editMode">{{ selectedContact.address }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.address">
+				</div>
+
+				<!-- State -->
+				<div class="sc-field">
+					<label>State:</label>
+					<span ng-if="!editMode">{{ selectedContact.state }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.state">
 				</div>
 
 				<!-- Client Status -->
 				<div class="sc-field">
 					<label>Client Status:</label>
-					<span ng-if="!editMode" ng-dblclick="editContact()">{{ selectedContact.status }}</span>
+					<span ng-if="!editMode">{{ selectedContact.status }}</span>
 					<input type="text" ng-if="editMode" ng-model="selectedContact.status">
 				</div>
 			
