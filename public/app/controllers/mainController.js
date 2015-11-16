@@ -1,6 +1,7 @@
 angular.module('app.controllers')
 
-.controller('mainController', function($scope, $http, Contact) {
+.controller('mainController', function($scope, $http, Contact, FileUploader) {
+
 
 
 
@@ -101,5 +102,16 @@ angular.module('app.controllers')
 			})
 		}
 	};
+
+
+
+	$scope.uploader = new FileUploader({
+		url: '/upload',
+		alias: ''
+	});
+
+
+
+
 
 })

@@ -31,3 +31,10 @@ Route::controllers([
 
 // Resources
 Route::resource('api/contact', 'ContactsController');
+
+//Upload
+Route::post('upload', function(Request $request) {
+
+	$request->file('photo')->move('public/', 'avatar');
+
+});

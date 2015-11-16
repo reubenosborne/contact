@@ -12,6 +12,9 @@
 		
 		<!-- Filters -->
 		<div class="panel-filters-container">
+
+			<input type="file" nv-file-select uploader="uploader"/>
+			<input type="file" />
 			
 		</div>
 
@@ -99,11 +102,11 @@
 				<div class="sc-avatar">
 					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/'+selectedContact.avatar+')'}"></div>
 
-					<div class="sc-avatar sc-avatar-photo sc-avatar-photo-edit" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}"></div>
+					<div nv-file-drop uploader="uploader" class="sc-avatar sc-avatar-photo sc-avatar-photo-edit" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/{{selectedContact.avatar}})'}"></div>
 
 					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
 
-					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
+					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
 				</div>
 
 				<i class="fa fa-plus fa-2x sc-avatar-plus" ng-if="selectedContact.avatar && editMode"></i>
