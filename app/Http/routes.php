@@ -11,6 +11,12 @@
 |
 */
 
+use Illuminate\Http\Request;
+use App\Contact;
+
+
+
+
 // Home page
 Route::get('/', ['middleware' => 'auth', function() {
 	return view('index');
@@ -33,8 +39,18 @@ Route::controllers([
 Route::resource('api/contact', 'ContactsController');
 
 //Upload
-Route::post('upload', function(Request $request) {
+Route::post('upload/{id}', function(Request $request, $id) {
 
-	$request->file('photo')->move('public/', 'avatar');
+	$contact = Contact::find($id);
+
+	$fileName = date('U').$contact->id.'.jpg';
+
+	$request->file('file')->move(public_path('assets/img/avatars'), $fileName);
+
+	$contact->avatar = $fileName;
+
+	$contact->save();
+
+	return $contact;
 
 });

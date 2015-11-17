@@ -105,10 +105,16 @@ angular.module('app.controllers')
 
 
 
-	$scope.uploader = new FileUploader({
-		url: '/upload',
-		alias: ''
-	});
+	$scope.uploader = new FileUploader();
+
+	$scope.uploader.onAfterAddingFile = function(item) {
+		item.url = '/upload/' + $scope.selectedContact.id;
+		item.upload();
+
+		item.onComplete = function (res) {
+			$scope.selectedContact.avatar = res.avatar;
+		}
+	}
 
 
 

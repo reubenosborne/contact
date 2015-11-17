@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<form action="/upload">
+	<form action="/upload/add" method="post" enctype="multipart/form-data">
 		
 		<input type="file" name="file">
 		<input type="hidden" name="contact_id" value="2">
