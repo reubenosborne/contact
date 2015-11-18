@@ -97,19 +97,30 @@
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact" ng-dblclick="editContact()">
 
+				<!-- Avatar -->
 				<div class="sc-avatar">
+					
+					<!-- Avatar -->
 					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
-
-					<div nv-file-drop uploader="uploader" class="sc-avatar sc-avatar-photo sc-avatar-photo-edit" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/{{selectedContact.avatar}})'}"></div>
-
+					
+					<!-- Avatar & Edit Mode -->
+					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/{{selectedContact.avatar}})'}"></div>
+					
+					<!-- Initials -->
 					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
-
+					
+					<!-- Initials & Edit Mode -->
 					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
 
-					<input type="file" nv-file-select uploader="uploader">
 				</div>
 
-				<i class="fa fa-plus fa-2x sc-avatar-plus" ng-if="selectedContact.avatar && editMode"></i>
+				<!-- Avatar Input -->
+				<!-- <input type="file" nv-file-select uploader="uploader"> -->
+				
+				<!-- Overlay -->
+				<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-overlay" ng-if="selectedContact.avatar && editMode">
+					<i class="fa fa-plus fa-2x"></i>
+				</div>
 
 				<br>
 			
@@ -181,6 +192,7 @@
 				<!-- Edit Button -->
 			
 				<div class="contact-control contact-edit" ng-click="editContact()" ng-if="!editMode"><i class="fa fa-pencil fa-2x"></i></div>
+
 				<div class="contact-control contact-edit" ng-click="editContact()" ng-if="editMode"><i class="fa fa-check fa-2x"></i></div>
 			
 				<!-- Delete Button -->

@@ -105,6 +105,9 @@ angular.module('app.controllers')
 
 
 
+
+	// Upload Avatar
+
 	$scope.uploader = new FileUploader();
 
 	$scope.uploader.onAfterAddingFile = function(item) {

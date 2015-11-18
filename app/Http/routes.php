@@ -38,7 +38,7 @@ Route::controllers([
 // Resources
 Route::resource('api/contact', 'ContactsController');
 
-//Upload
+//Upload Avatars
 Route::post('upload/{id}', function(Request $request, $id) {
 
 	$contact = Contact::find($id);
