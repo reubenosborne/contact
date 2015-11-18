@@ -15,8 +15,8 @@ body
 	flex-direction row
 	height 100vh
 	
-	@media (max-width: 800px) {
-		flex-direction column-reverse
+	@media (max-width: 500px) {
+		flex-direction column
 	}
 
 	
@@ -27,23 +27,20 @@ body
 // Filter Panel
 
 .panel-filters
-	flex 2
-	display flex
-	flex-direction column
-	border-right 1px solid lightgrey
+	// flex 2
+	// display flex
+	// flex-direction column
+	// border-right 1px solid lightgrey
+	display none
 	
-	@media ( max-width: 800px) {
-		flex 0
-	}
+// .panel-filters-container
+// 	flex 1
 	
-.panel-filters-container
-	flex 1
-	
-.panel-filters-control
-	display flex
-	align-items center
-	justify-content center
-	padding 20px
+// .panel-filters-control
+// 	display flex
+// 	align-items center
+// 	justify-content center
+// 	padding 20px
 	
 // Contact Panel
 	
@@ -54,6 +51,10 @@ body
 	flex-direction column
 	border-right 1px solid lightgrey
 	
+	@media ( max-width: 800px) {
+		flex 1
+	}
+	
 .panel-contacts-container
 	overflow scroll
 	overflow-x hidden
@@ -63,7 +64,15 @@ body
 
 .panel-info
 	flex 4
+	min-width 550px
 	border-right 1px solid lightgrey
+	
+	@media ( max-width: 800px) {
+		flex 2
+		display absolute
+		top 0
+		left 0
+		}
 	
 .panel-info-container
 	padding 20px 30px
@@ -143,7 +152,7 @@ body
 	align-items center
 	
 	&:hover
-		background hoverwhite
+		background transparentblack
 
 // .cc will hereby replace all instances of .contact-card
 		
@@ -193,6 +202,7 @@ body
 	justify-content center
 	color white
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	cursor pointer
 	
 .contact-add
 	background green
@@ -319,8 +329,8 @@ body
 // ====================================================
 
 .sc-avatar
-	width 100px
-	height 100px
+	min-width 100px
+	min-height 100px
 	border-radius 50%
 	display flex
 	align-items center
@@ -370,3 +380,6 @@ body
 // ====================================================
 // ================== Miscellaneous ===================
 // ====================================================
+
+hr
+	margin-bottom 0
