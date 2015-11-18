@@ -108,10 +108,10 @@ angular.module('app.controllers')
 
 	// Upload Avatar
 
-	$scope.uploader = new FileUploader();
+	$scope.avatarUploader = new FileUploader();
 
-	$scope.uploader.onAfterAddingFile = function(item) {
-		item.url = '/upload/' + $scope.selectedContact.id;
+	$scope.avatarUploader.onAfterAddingFile = function(item) {
+		item.url = '/avatar/upload/' + $scope.selectedContact.id;
 		item.upload();
 
 		item.onComplete = function (res) {

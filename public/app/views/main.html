@@ -19,7 +19,7 @@
 		<!-- Filters Control -->
 		<div class="panel-filters-control">
 			<!-- Add Contact Button -->
-			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-user-plus fa-2x"></i></div>
+			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
 		</div>
 
 	</div>
@@ -45,7 +45,8 @@
 
 		<!-- Search -->
 		<div class="search-contacts">
-			<input type="search" placeholder="&#xF002; &nbsp;&nbsp; Search for anything..." style="font-family:Arial, FontAwesome" ng-model="search"/>
+			<i class="fa fa-search"></i>
+			<input type="search" placeholder="Search for anything..." ng-model="search"/>
 		</div>
 
 
@@ -91,44 +92,50 @@
 		<div class="panel-info-container">
 			
 			<!-- Info Dialogue -->
-			<h1 ng-if="!selectedContact">Choose a contact</h1>
+			<div class="info-dialogue">
+
+				<h1 ng-if="!selectedContact">Choose a contact</h1>
+
+			</div>
+			
 			
 
 			<!-- Contact Info -->
 			<div class="selected-contact" ng-if="selectedContact" ng-dblclick="editContact()">
 
-				<!-- Avatar -->
-				<div class="sc-avatar">
-					
+				<div class="sc-header">
+
 					<!-- Avatar -->
-					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
-					
-					<!-- Avatar & Edit Mode -->
-					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
-					
-					<!-- Initials -->
-					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
-					
-					<!-- Initials & Edit Mode -->
-					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
+					<div class="sc-avatar">
+						
+						<!-- Avatar -->
+						<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
+						
+						<!-- Avatar & Edit Mode -->
+						<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
+						
+						<!-- Initials -->
+						<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
+						
+						<!-- Initials & Edit Mode -->
+						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
 
-					<!-- Overlay -->
-					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-overlay" ng-if="selectedContact.avatar && editMode">
-						<i class="fa fa-plus fa-2x"></i>
+						<!-- Overlay -->
+						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-overlay" ng-if="selectedContact.avatar && editMode">
+							<i class="fa fa-plus fa-2x"></i>
+						</div>
+
+						<!-- Avatar Input -->
+						<input type="file" nv-file-select uploader="avatarUploader" class="avatar-upload" ng-if="editMode">
+
 					</div>
-
-					<!-- Avatar Input -->
-					<input type="file" nv-file-select uploader="uploader" class="avatar-upload" ng-if="editMode">
-
-				</div>
-
-				<br>
-			
-				<!-- Name -->
-				<div class="sc-name">
-					<label></label>
-					<span ng-if="!editMode">{{ selectedContact.name }}</span>
-					<input type="text" class="sc-field" ng-if="editMode" ng-model="selectedContact.name">
+				
+					<!-- Name -->
+					<div class="sc-name">
+						<label></label>
+						<span ng-if="!editMode">{{ selectedContact.name }}</span>
+						<input type="text" class="sc-field" ng-if="editMode" ng-model="selectedContact.name">
+					</div>
 				</div>
 
 				<br>
@@ -183,10 +190,14 @@
 				</div>
 
 				<!-- Client Status -->
-				<div class="sc-field">
+				<div class="sc-field sc-status">
 					<label>Client Status:</label>
 					<span ng-if="!editMode">{{ selectedContact.status }}</span>
-					<input type="text" ng-if="editMode" ng-model="selectedContact.status">
+					<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
+					<select ng-if="editMode" ng-model="selectedContact.status">
+						<option value="Active">Active</option>
+						<option value="Inactive">Inactive</option>
+					</select>
 				</div>
 			
 				<!-- Edit Button -->
@@ -204,7 +215,28 @@
 
 	</div>
 
+	
 
+
+
+
+
+
+
+
+
+
+<!-- 	<div class="panel-files">
+		
+		<div class="panel-header">
+			{{ selectedContact.name | uppercase }}
+		</div>
+
+		<div class="panel-files-container">
+			
+		</div>
+
+	</div> -->
 
 
 

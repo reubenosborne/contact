@@ -1,6 +1,12 @@
+@require "variables.styl"
+
+// ====================================================
+// ================ Global Stlying ====================
+// ====================================================
+
 body
 	font-family helvetica
-	color rgba(48, 77, 111, 1)
+	color nicedarkblue
 	user-select none
 	overflow hidden
 
@@ -9,6 +15,11 @@ body
 	flex-direction row
 	height 100vh
 	
+	@media (max-width: 800px) {
+		flex-direction column-reverse
+	}
+
+	
 // ====================================================
 // ================= Panel Styling ====================
 // ====================================================
@@ -16,10 +27,14 @@ body
 // Filter Panel
 
 .panel-filters
-	flex 1
+	flex 2
 	display flex
 	flex-direction column
-	border-right 1px solid rgba(0,0,0,.1)
+	border-right 1px solid lightgrey
+	
+	@media ( max-width: 800px) {
+		flex 0
+	}
 	
 .panel-filters-container
 	flex 1
@@ -37,7 +52,7 @@ body
 	min-width 250px
 	display flex
 	flex-direction column
-	border-right 1px solid rgba(0,0,0,.1)
+	border-right 1px solid lightgrey
 	
 .panel-contacts-container
 	overflow scroll
@@ -48,9 +63,19 @@ body
 
 .panel-info
 	flex 4
+	border-right 1px solid lightgrey
 	
 .panel-info-container
-	padding 1em
+	padding 20px 30px
+	
+// Files Panel
+
+// .panel-files
+// 	flex 1
+// 	background #666
+	
+// .panel-files-container
+// 	padding 1em
 	
 	
 // ====================================================
@@ -60,7 +85,7 @@ body
 .panel-header
 	min-height 25px
 	width 100%
-	background rgba(60, 130, 205, 1)
+	background header
 	
 	display flex
 	align-items center
@@ -77,25 +102,30 @@ body
 // ====================================================
 
 .search-contacts
+	position relative
 	min-height 50px
 	display flex
 	align-items center
 	background white
-	border-bottom 1px solid rgba(0,0,0,.05)
+	border-bottom 1px solid lightgrey
 	
 	input
 		width 100%
 		height 30px
-		padding 0 10px 0 20px
+		padding 0 10px 0 35px
 		margin 0 10px
-		border 1px solid #CCC
+		border 1px solid lightgrey
 		border-radius 20px
 		transition .5s
 		
 		&:focus
 			outline 0px
-			border 1px solid #999
+			border 1px solid darkgrey
 
+	i
+		position absolute
+		top 18px
+		left 23px
 
 // ====================================================
 // =================== Contact Card ===================
@@ -107,13 +137,13 @@ body
 	margin 0
 	background white
 	height 50px
-	border-bottom 1px solid rgba(0,0,0,.05)
+	border-bottom 1px solid lightgrey
 	
 	display flex
 	align-items center
 	
 	&:hover
-		background rgba(0,0,0,.03)
+		background hoverwhite
 
 // .cc will hereby replace all instances of .contact-card
 		
@@ -124,7 +154,7 @@ body
 	margin 0 10px 0 5px
 		
 .cc-avatar-initials
-	background #EEE
+	background bggrey
 	display flex
 	align-items center
 	justify-content center
@@ -165,42 +195,57 @@ body
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	
 .contact-add
-	background #2ecc71
+	background green
 	transition .1s
 	
 	&:hover
-		background darken(#2ecc71, 10%)
+		background darken(green, 10%)
+		
+	&:active
+		background green
 		
 	
 .contact-delete
 	position absolute
 	bottom 20px
 	right 85px
-	background #e74c3c
+	background red
 	transition .1s
 	
 	&:hover
-		background darken(#e74c3c, 10%)
+		background darken(red, 10%)
 		
 	&:active
-		background #e74c3c
+		background red
 		
 
 .contact-edit
 	position absolute
 	bottom 20px
 	right 20px
-	background #3498db
+	background blue
 	transition .1s
 	
 	&:hover
-		background darken(#3498db, 10%)
+		background darken(blue, 10%)
 		
 	&:active
-		background #3498db
+		background blue
 		
 
 	
+// ====================================================
+// ================= Info Dialogue ====================
+// ====================================================
+
+.info-dialogue
+	display flex
+	align-items center
+	justify-content center
+	
+	h1
+		font-weight 100
+
 // ====================================================
 // ================ Selected Contact ==================
 // ====================================================
@@ -209,6 +254,11 @@ body
 	margin 0
 
 // .sc will hereby replace .selected-contact
+
+.sc-header
+	display flex
+	flex-direction row
+	align-items center
 
 .sc-field
 	height 30px
@@ -224,40 +274,53 @@ body
 		
 	span
 		padding 3px
-		border 2px solid rgba(0,0,0,0)
+		border 2px solid invisible
 		
 	input
 		width 100%
 		padding 3px
 		
 .sc-name
-	height 40px
+	height 45px
 	display flex
 	align-items center
 	margin 5px
+	padding-left 20px
 	
 	span
 		padding 3px
-		border 2px solid rgba(0,0,0,0)
-		font-size 24px
-		height 40px
+		border 2px solid invisible
+		font-size 28px
+		font-weight 100
+		height 45px
 	
 	input
 		margin 0
 		width 100%
 		padding 3px
-		font-size 24px
-		height 40px
+		font-size 28px
+		font-weight 100
+		height 45px
 		position relative
-		top 2px
+		top 3px
+		
+.sc-status
+	
+	span
+		padding-left 6px
+	
+	select
+		border 1px solid darkgrey
+		background none
+		
 		
 // ====================================================
 // ===================== Avatar =======================
 // ====================================================
 
 .sc-avatar
-	width 150px
-	height 150px
+	width 100px
+	height 100px
 	border-radius 50%
 	display flex
 	align-items center
@@ -265,18 +328,21 @@ body
 	position relative
 	
 .sc-avatar-initials
-	background #EEE
-	font-size 24px
+	background bggrey
+	font-size 32px
+	font-weight 100
+	border 2px solid lightgrey
 	
 .sc-avatar-photo
 	background no-repeat center center
 	background-size cover
+	border 2px solid lightgrey
 	
 .sc-avatar-overlay
 	position absolute
 	top 0
 	left 0
-	background rgba(256,256,256,0.5)
+	background transparentwhite
 	
 .avatar-upload
 	width 50px
@@ -289,10 +355,18 @@ body
 	cursor pointer
 	
 .nv-file-over
-	border 2px dashed dodgerblue
+	border 3px dashed lighten(blue, 20%)
 	
+
+// ====================================================
+// =================== Files Panel ====================
+// ====================================================
+
+
+
+
+
 	
 // ====================================================
 // ================== Miscellaneous ===================
 // ====================================================
-
