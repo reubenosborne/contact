@@ -19,7 +19,7 @@
 		<!-- Filters Control -->
 		<div class="panel-filters-control">
 			<!-- Add Contact Button -->
-			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus"></i></div>
+			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-user-plus fa-2x"></i></div>
 		</div>
 
 	</div>
@@ -58,7 +58,7 @@
 					{{ contact.name.charAt(0) }}
 				</div>
 
-				<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/{{contact.avatar}})'}"></div>
+				<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/'+contact.avatar+')'}"></div>
 			
 				<div class="cc-details">
 					<h3>{{ contact.name }}</h3>
@@ -104,7 +104,7 @@
 					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
 					
 					<!-- Avatar & Edit Mode -->
-					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/{{selectedContact.avatar}})'}"></div>
+					<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
 					
 					<!-- Initials -->
 					<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
@@ -112,14 +112,14 @@
 					<!-- Initials & Edit Mode -->
 					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
 
-				</div>
+					<!-- Overlay -->
+					<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-overlay" ng-if="selectedContact.avatar && editMode">
+						<i class="fa fa-plus fa-2x"></i>
+					</div>
 
-				<!-- Avatar Input -->
-				<!-- <input type="file" nv-file-select uploader="uploader"> -->
-				
-				<!-- Overlay -->
-				<div nv-file-drop nv-file-over uploader="uploader" class="sc-avatar sc-avatar-overlay" ng-if="selectedContact.avatar && editMode">
-					<i class="fa fa-plus fa-2x"></i>
+					<!-- Avatar Input -->
+					<input type="file" nv-file-select uploader="uploader" class="avatar-upload" ng-if="editMode">
+
 				</div>
 
 				<br>

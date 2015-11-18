@@ -151,7 +151,7 @@ body
 
 
 // ====================================================
-// =============== Contact Controllers ================
+// ================= Contact Buttons ==================
 // ====================================================
 
 .contact-control
@@ -161,23 +161,44 @@ body
 	display flex
 	align-items center
 	justify-content center
-	box-shadow 2px 2px 8px rgba(0,0,0,.2)
 	color white
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	
 .contact-add
 	background #2ecc71
+	transition .1s
+	
+	&:hover
+		background darken(#2ecc71, 10%)
+		
 	
 .contact-delete
 	position absolute
 	bottom 20px
 	right 85px
 	background #e74c3c
+	transition .1s
+	
+	&:hover
+		background darken(#e74c3c, 10%)
+		
+	&:active
+		background #e74c3c
+		
 
 .contact-edit
 	position absolute
 	bottom 20px
 	right 20px
 	background #3498db
+	transition .1s
+	
+	&:hover
+		background darken(#3498db, 10%)
+		
+	&:active
+		background #3498db
+		
 
 	
 // ====================================================
@@ -229,15 +250,19 @@ body
 		height 40px
 		position relative
 		top 2px
+		
+// ====================================================
+// ===================== Avatar =======================
+// ====================================================
 
 .sc-avatar
-	width 100px
-	height 100px
+	width 150px
+	height 150px
 	border-radius 50%
 	display flex
 	align-items center
 	justify-content center
-	border 1px solid #DDD
+	position relative
 	
 .sc-avatar-initials
 	background #EEE
@@ -248,9 +273,20 @@ body
 	background-size cover
 	
 .sc-avatar-overlay
-	position relative
-	bottom 100px
+	position absolute
+	top 0
+	left 0
 	background rgba(256,256,256,0.5)
+	
+.avatar-upload
+	width 50px
+	height 50px
+	opacity 0
+	border 1px solid black
+	position absolute
+	top 50px
+	left 50px
+	cursor pointer
 	
 .nv-file-over
 	border 2px dashed dodgerblue
