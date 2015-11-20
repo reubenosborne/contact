@@ -27,6 +27,17 @@ angular.module('app.controllers')
 
 
 
+
+	// Unselect Contact
+
+	$scope.unselectContact = function() {
+		
+		$scope.selectedContact = undefined;
+		
+	}
+
+
+
 	// Add Contact
 
 	$scope.addContact = function () {

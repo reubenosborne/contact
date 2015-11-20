@@ -1,28 +1,33 @@
-<div class="app-container">
+<div class="app-container" ng-class="{'contact-selected': !!selectedContact}">
 
 
 
-	<!-- Filters Panel -->
-	<div class="panel-filters">
+<!-- 	<div class="panel-filters">
 
-		<!-- Filters Header -->
 		<div class="panel-header">
 			FILTERS
 		</div>
 		
-		<!-- Filters -->
 		<div class="panel-filters-container">
 
 			
 		</div>
 
-		<!-- Filters Control -->
 		<div class="panel-filters-control">
-			<!-- Add Contact Button -->
 			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
 		</div>
 
-	</div>
+	</div> -->
+
+	<!-- Filters Panel -->
+
+		<!-- Filters Header -->
+
+		<!-- Filters -->
+
+		<!-- Filters Control -->
+
+			<!-- Add Contact Button -->
 
 
 
@@ -70,6 +75,11 @@
 
 		</div>
 
+		<div class="panel-filters-control">
+			<!-- Add Contact Button -->
+			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
+		</div>
+
 	</div>
 
 
@@ -94,7 +104,7 @@
 			<!-- Info Dialogue -->
 			<div class="info-dialogue">
 
-				<h1 ng-if="!selectedContact">Choose a contact</h1>
+				<h1 ng-if="selectedContact == undefined">Choose a contact</h1>
 
 			</div>
 			
@@ -206,10 +216,15 @@
 				<div class="contact-control contact-edit" ng-click="editContact()" ng-if="!editMode"><i class="fa fa-pencil fa-2x"></i></div>
 
 				<div class="contact-control contact-edit" ng-click="editContact()" ng-if="editMode"><i class="fa fa-check fa-2x"></i></div>
+
 			
 				<!-- Delete Button -->
 			
 				<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)"><i class="fa fa-times fa-2x"></i></div>
+
+				<!-- Back Button -->
+
+				<div class="contact-control contact-back" ng-click="unselectContact()"><i class="fa fa-arrow-left fa-2x"></i></div>
 			
 			</div>
 		</div>
