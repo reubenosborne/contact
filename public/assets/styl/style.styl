@@ -56,6 +56,8 @@ body
 .panel-info
 	flex 3
 	border-right 1px solid lightgrey
+	display flex
+	flex-direction column
 	
 	@media ( max-width: 800px) {
 		display none
@@ -64,13 +66,15 @@ body
 	
 .panel-info-container
 	padding 20px 30px
+	overflow scroll
+	overflow-x hidden
 
 // Mobile View
 	
 @media ( max-width: 800px)
 	.contact-selected
 		.panel-info
-			display block
+			display flex
 			
 		.panel-contacts
 			display none
@@ -200,8 +204,8 @@ body
 // ====================================================
 
 .contact-control
-	width 60px
-	height 60px
+	width 50px
+	height 50px
 	border-radius 50%
 	display flex
 	align-items center
@@ -216,7 +220,7 @@ body
 	position absolute
 	bottom 10px
 	left 50%
-	margin-left -30px
+	margin-left -25px
 	
 	&:hover
 		background darken(green, 10%)
@@ -228,7 +232,7 @@ body
 .contact-delete
 	position absolute
 	bottom 10px
-	right 85px
+	right 70px
 	background red
 	transition .1s
 	
@@ -242,7 +246,7 @@ body
 .contact-edit
 	position absolute
 	bottom 10px
-	right 20px
+	right 10px
 	background blue
 	transition .1s
 	
@@ -256,7 +260,7 @@ body
 .contact-back
 	position absolute
 	bottom 10px
-	right 150px
+	right 130px
 	background orange
 	transition .1s
 	display none
