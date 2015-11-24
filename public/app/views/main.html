@@ -101,9 +101,15 @@
 		<div class="panel-info-container">
 			
 			<!-- Info Dialogue -->
-			<div class="info-dialogue">
+			<div class="info-dialogue" ng-if="selectedContact == undefined">
 
-				<h1 ng-if="selectedContact == undefined">Choose a contact</h1>
+				<div class="info-dialogue-card">
+					
+					<h1>Welcome</h1>
+
+					<p>Please choose a contact to continue.</p>
+
+				</div>
 
 			</div>
 			
@@ -181,8 +187,22 @@
 				<!-- Email -->
 				<div class="sc-field">
 					<label>Email:</label>
-					<span ng-if="!editMode">{{ selectedContact.email }}</span>
-					<input type="text" ng-if="editMode" ng-model="selectedContact.email">
+					<span ng-if="!editMode">{{ selectedContact.email1 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
+				</div>
+
+				<!-- Email Two -->
+				<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
+					<label>Email:</label>
+					<span ng-if="!editMode">{{ selectedContact.email2 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
+				</div>
+
+				<!-- Email Three -->
+				<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
+					<label>Email:</label>
+					<span ng-if="!editMode">{{ selectedContact.email3 }}</span>
+					<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
 				</div>
 
 				<!-- Address -->

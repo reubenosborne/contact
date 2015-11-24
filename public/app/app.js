@@ -6,7 +6,6 @@ angular.module('app.filters', [])
 angular.module('app.routes', [])
 angular.module('app.views', [])
 
-
 angular.module('app', [
 
 	'angularFileUpload',
@@ -19,7 +18,7 @@ angular.module('app', [
 	'app.services',
 	'app.filters',
 	'app.routes',
-	'app.views'
+	'app.views',
 	
 ])
 

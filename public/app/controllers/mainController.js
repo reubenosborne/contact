@@ -3,8 +3,6 @@ angular.module('app.controllers')
 .controller('mainController', function($scope, $http, Contact, FileUploader) {
 
 
-
-
 	// Load Contacts
 
 	$scope.allContacts = Contact.query();
@@ -129,7 +127,6 @@ angular.module('app.controllers')
 			$scope.selectedContact.avatar = res.avatar;
 		}
 	}
-
 
 
 
