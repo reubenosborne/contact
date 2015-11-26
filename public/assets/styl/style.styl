@@ -13,23 +13,14 @@ body
 	display flex
 	flex-direction row
 	height 100vh
+	
+a:hover
+	text-decoration none
 
 	
 // ====================================================
 // ================= Panel Styling ====================
 // ====================================================
-
-// Filter Panel
-
-// .panel-filters
-// 	flex 1
-// 	display flex
-// 	flex-direction column
-// 	border-right 1px solid lightgrey
-// 	// display none
-	
-// .panel-filters-container
-// 	flex 1
 	
 // Contact Panel
 	
@@ -87,12 +78,17 @@ body
 	
 // Files Panel
 
-// .panel-files
-// 	flex 1
-// 	background #666
+.panel-files
+	width 150px
+	background lightgrey
+	// display none
+		
+	@media ( max-width: 800px ) {
+		display none
+	}
 	
-// .panel-files-container
-// 	padding 1em
+.panel-files-container
+	padding 1em
 	
 	
 // ====================================================
@@ -204,6 +200,14 @@ body
 // ================= Contact Buttons ==================
 // ====================================================
 
+.contact-controllers
+	position absolute
+	bottom 10px
+	right 10px
+	display flex
+	flex-direction row
+	align-items center
+	
 .contact-control
 	width 50px
 	height 50px
@@ -214,26 +218,24 @@ body
 	color white
 	box-shadow: 0px 1px 4px rgba(0,0,0,0.12), 1px 2px 8px rgba(0,0,0,0.24);
 	cursor pointer
+	margin 5px
 	
 .contact-add
 	background green
 	transition .1s
 	position absolute
-	bottom 10px
+	bottom 5px
 	left 50%
 	margin-left -25px
 	
 	&:hover
 		background darken(green, 10%)
-		
+	
 	&:active
 		background green
 		
 	
 .contact-delete
-	position absolute
-	bottom 10px
-	right 70px
 	background red
 	transition .1s
 	
@@ -245,9 +247,6 @@ body
 		
 
 .contact-edit
-	position absolute
-	bottom 10px
-	right 10px
 	background blue
 	transition .1s
 	
@@ -259,9 +258,6 @@ body
 		
 		
 .contact-back
-	position absolute
-	bottom 10px
-	right 130px
 	background orange
 	transition .1s
 	display none
@@ -294,6 +290,7 @@ body
 	h1
 		font-weight 100
 		font-size 24px
+		margin 10px
 
 // ====================================================
 // ================ Selected Contact ==================
@@ -361,7 +358,8 @@ body
 			font-size 20px
 		}
 		
-.sc-status
+.sc-status,
+.sc-type
 	
 	span
 		padding-left 7px

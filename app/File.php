@@ -5,11 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class File extends Model
 {
+    use SoftDeletes;
 
-	use SoftDeletes;
-
-    public $fillable = ['', '', ''];
+    public $fillable = ['name'];
     
 }

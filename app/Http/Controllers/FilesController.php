@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\File;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
-class UsersController extends Controller
+
+class FilesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +18,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $files = File::all();
+
+        return $files;
+
     }
 
     /**
@@ -37,7 +33,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = new File();
+
+        $file->fill($request->all());
+
+        $file->save();
+
+        return $file;
     }
 
     /**
@@ -48,18 +50,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $file = File::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        if (is_null($file)) {
+            return response()->json(['error'=>'No file found with ID '.$id], 404);
+        }
+
+        return $file;
     }
 
     /**
@@ -71,7 +68,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = File::find($id);
+
+        if (is_null($file)) {
+            return response()->json(['error'=>'No file found with ID '.$id], 404);
+        }
+
+        $file->fill($request->all());
+
+        $file->save();
+
+        return $file;
     }
 
     /**
@@ -82,6 +89,14 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = File::find($id);
+
+        if (is_null($file)) {
+            return response()->json(['error'=>'No file found with ID '.$id], 404);
+        }
+
+        $file->delete();
+
+        return $file;
     }
 }

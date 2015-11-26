@@ -35,8 +35,15 @@ Route::controllers([
 	'password' => 'Auth\PasswordController'
 ]);
 
-// Resources
+// API & Resources
 Route::resource('api/contact', 'ContactsController');
+
+Route::get('api/user', function() {
+	$user = Auth::user();
+	return $user;
+});
+
+Route::resource('api/file', 'FilesController');
 
 //Upload Avatars
 Route::post('avatar/upload/{id}', function(Request $request, $id) {
@@ -52,5 +59,26 @@ Route::post('avatar/upload/{id}', function(Request $request, $id) {
 	$contact->save();
 
 	return $contact;
+
+});
+
+//Upload Avatars
+Route::post('file/upload/{id}', function(Request $request, $id) {
+
+	$contact = Contact::find($id);
+
+	$file = new File();
+
+	$file->contact_id = $contact->id;
+
+	$file->name = date('U').$contact->id.'.jpg'; // How do I name this as the uploaded file name?
+
+	$request->file('file')->move(public_path('assets/img/avatars'), $fileName);
+
+	$file->save();
+
+	return $file;
+
+
 
 });

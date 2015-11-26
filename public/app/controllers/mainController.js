@@ -1,11 +1,26 @@
 angular.module('app.controllers')
 
-.controller('mainController', function($scope, $http, Contact, FileUploader) {
+.controller('mainController', function($scope, $http, Contact, User, File, FileUploader) {
+
+
+	// Load User
+
+	$scope.user = User.get();
 
 
 	// Load Contacts
 
 	$scope.allContacts = Contact.query();
+
+
+	// Load Files
+
+	$scope.allfiles = File.query();
+
+	if ($scope.selectedContact) {
+		$scope.userFiles = File.query({id: $scope.selectedContact.id})
+	};
+
 
 
 
@@ -128,6 +143,19 @@ angular.module('app.controllers')
 		}
 	}
 
+
+	// Upload File
+
+	$scope.fileUploader = new FileUploader();
+
+	$scope.fileUploader.onAfterAddingFile = function(item) {
+		item.url = '/file/upload/' + $scope.selectedContact.id;
+		item.upload();
+
+		item.onComplete = function (res) {
+			// $scope.selectedContact.avatar = res.avatar;
+		}
+	}
 
 
 
