@@ -13,6 +13,7 @@
 
 use Illuminate\Http\Request;
 use App\Contact;
+use App\File;
 
 
 
@@ -65,20 +66,28 @@ Route::post('avatar/upload/{id}', function(Request $request, $id) {
 //Upload Avatars
 Route::post('file/upload/{id}', function(Request $request, $id) {
 
-	$contact = Contact::find($id);
-
 	$file = new File();
 
-	$file->contact_id = $contact->id;
+	$contact = Contact::find($id);
 
-	$file->name = date('U').$contact->id.'.jpg'; // How do I name this as the uploaded file name?
+	$file->contact_id = $id;
 
-	$request->file('file')->move(public_path('assets/img/avatars'), $fileName);
+	$folder = public_path('assets/files/' . $contact->name);
+
+	if (is_dir($folder) == false) {
+		mkdir($folder);
+	}
+
+	$uploadedFile = $request->file('file');
+
+	$fileName = $uploadedFile->getClientOriginalName();
+
+	$uploadedFile->move($folder, $fileName);
+
+	$file->name = $fileName;
 
 	$file->save();
 
 	return $file;
-
-
 
 });

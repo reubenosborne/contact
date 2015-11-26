@@ -18,7 +18,8 @@ class ContactsController extends Controller
     public function index()
     {
 
-        $contacts = Contact::all();
+        // Get all the files associated with the retrieved contact
+        $contacts = Contact::with('files')->get();
 
         return $contacts;
 
@@ -49,7 +50,7 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        $contact = Contact::find($id);
+        $contact = Contact::where('id', $id)->with('files')->first();
 
         if (is_null($contact)) {
             return response()->json(['error'=>'No contact found with ID '.$id], 404);

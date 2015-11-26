@@ -10,5 +10,9 @@ class File extends Model
     use SoftDeletes;
 
     public $fillable = ['name'];
+
+    public function contact() {
+    	return $this->belongsTo('App\Contact', 'contact_id');
+    }
     
 }

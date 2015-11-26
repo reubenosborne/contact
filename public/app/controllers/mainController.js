@@ -18,8 +18,8 @@ angular.module('app.controllers')
 	$scope.allfiles = File.query();
 
 	if ($scope.selectedContact) {
-		$scope.userFiles = File.query({id: $scope.selectedContact.id})
-	};
+		$scope.userFiles = File.query({contact_id: $scope.selectedContact.id})
+	}
 
 
 
@@ -149,11 +149,12 @@ angular.module('app.controllers')
 	$scope.fileUploader = new FileUploader();
 
 	$scope.fileUploader.onAfterAddingFile = function(item) {
+		if ($scope.editMode) {return}
 		item.url = '/file/upload/' + $scope.selectedContact.id;
 		item.upload();
 
 		item.onComplete = function (res) {
-			// $scope.selectedContact.avatar = res.avatar;
+			$scope.selectedContact.files.push(res);
 		}
 	}
 
