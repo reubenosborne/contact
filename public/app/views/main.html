@@ -229,6 +229,7 @@
 			
 				<div class="contact-buttons">
 
+
 					<!-- Back Button -->
 
 					<div class="contact-control contact-back" ng-click="unselectContact()"><i class="fa fa-arrow-left fa-2x"></i></div>
@@ -242,6 +243,10 @@
 					<div class="contact-control contact-edit" ng-click="editContact()" ng-if="!editMode"><i class="fa fa-pencil fa-2x"></i></div>
 
 					<div class="contact-control contact-edit" ng-click="editContact()" ng-if="editMode"><i class="fa fa-check fa-2x"></i></div>
+
+					<!-- Files Button -->
+
+					<div class="contact-control contact-files"><i class="fa fa-inbox fa-2x"></i></div>
 
 				</div>
 			
@@ -266,7 +271,10 @@
 
 		<div class="panel-files-container">
 			
-			
+			<a href="assets/files/{{ selectedContact.name }}/{{ selectedContact.files.name }}" class="file" ng-repeat="file in selectedContact.files">
+				<i class="fa fa-file fa-3x"></i>
+				<div class="file-name">{{ file.name }}</div>
+			</a>
 
 		</div>
 

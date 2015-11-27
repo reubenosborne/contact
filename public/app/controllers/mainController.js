@@ -15,13 +15,7 @@ angular.module('app.controllers')
 
 	// Load Files
 
-	$scope.allfiles = File.query();
-
-	if ($scope.selectedContact) {
-		$scope.userFiles = File.query({contact_id: $scope.selectedContact.id})
-	}
-
-
+	$scope.allFiles = File.query();
 
 
 
@@ -149,7 +143,9 @@ angular.module('app.controllers')
 	$scope.fileUploader = new FileUploader();
 
 	$scope.fileUploader.onAfterAddingFile = function(item) {
-		if ($scope.editMode) {return}
+
+		if ($scope.editMode) {return} // escape
+
 		item.url = '/file/upload/' + $scope.selectedContact.id;
 		item.upload();
 
