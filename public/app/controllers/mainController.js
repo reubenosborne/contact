@@ -155,5 +155,16 @@ angular.module('app.controllers')
 	}
 
 
+	// Toggle File Draw
+
+	$scope.toggleFiles = false;
+
+  	$scope.toggleFiles = function() {
+
+    	$scope.showFiles = !$scope.showFiles;
+
+  	};
+
+
 
 })

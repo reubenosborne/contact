@@ -131,6 +131,16 @@
 
 				<br>
 
+
+
+
+
+
+
+
+
+
+
 				<!-- Contact Type -->
 				<div class="sc-field sc-type">
 					<label>Type</label>
@@ -142,6 +152,16 @@
 						<option value="Event">Event</option>
 					</select>
 				</div>
+
+
+
+
+
+
+
+
+
+
 				
 
 				<div class="sc-client" ng-if="selectedContact.type == 'Client'">
@@ -149,6 +169,254 @@
 					<!-- Company -->
 					<div class="sc-field">
 						<label>Company:</label>
+						<span ng-if="!editMode">{{ selectedContact.company }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+					</div>
+
+					<!-- Phone -->
+					<div class="sc-field">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone1 }}">{{ selectedContact.phone1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+					</div>
+
+					<!-- Phone Two -->
+					<div class="sc-field" ng-if="selectedContact.phone1" ng-hide="!selectedContact.phone2 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone2 }}">{{ selectedContact.phone2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
+					</div>
+
+					<!-- Phone Three -->
+					<div class="sc-field" ng-if="selectedContact.phone2" ng-hide="!selectedContact.phone3 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone3 }}">{{ selectedContact.phone3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
+					</div>
+
+					<!-- Email -->
+					<div class="sc-field">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email1 }}">{{ selectedContact.email1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
+					</div>
+
+					<!-- Email Two -->
+					<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email2 }}">{{ selectedContact.email2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
+					</div>
+
+					<!-- Email Three -->
+					<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email3 }}">{{ selectedContact.email3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
+					</div>
+
+					<!-- Address -->
+					<div class="sc-field">
+						<label>Address:</label>
+						<span ng-if="!editMode"><a href="http://maps.google.com/?q={{ selectedContact.address }}" target="_blank">{{ selectedContact.address }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.address">
+					</div>
+
+					<!-- State -->
+					<div class="sc-field">
+						<label>State:</label>
+						<span ng-if="!editMode">{{ selectedContact.state }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
+					</div>
+
+					<!-- Client Status -->
+					<div class="sc-field sc-status">
+						<label>Client Status:</label>
+						<span ng-if="!editMode">{{ selectedContact.status }}</span>
+						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
+						<select ng-if="editMode" ng-model="selectedContact.status">
+							<option value="Active">Active</option>
+							<option value="Inactive">Inactive</option>
+						</select>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class="sc-supplier" ng-if="selectedContact.type == 'Supplier'">
+
+					<!-- Company -->
+					<div class="sc-field">
+						<label>Company:</label>
+						<span ng-if="!editMode">{{ selectedContact.company }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+					</div>
+
+					<!-- Phone -->
+					<div class="sc-field">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone1 }}">{{ selectedContact.phone1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+					</div>
+
+					<!-- Phone Two -->
+					<div class="sc-field" ng-if="selectedContact.phone1" ng-hide="!selectedContact.phone2 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone2 }}">{{ selectedContact.phone2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
+					</div>
+
+					<!-- Phone Three -->
+					<div class="sc-field" ng-if="selectedContact.phone2" ng-hide="!selectedContact.phone3 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone3 }}">{{ selectedContact.phone3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
+					</div>
+
+					<!-- Email -->
+					<div class="sc-field">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email1 }}">{{ selectedContact.email1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
+					</div>
+
+					<!-- Email Two -->
+					<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email2 }}">{{ selectedContact.email2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
+					</div>
+
+					<!-- Email Three -->
+					<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email3 }}">{{ selectedContact.email3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
+					</div>
+
+					<!-- Address -->
+					<div class="sc-field">
+						<label>Address:</label>
+						<span ng-if="!editMode"><a href="http://maps.google.com/?q={{ selectedContact.address }}" target="_blank">{{ selectedContact.address }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.address">
+					</div>
+
+					<!-- State -->
+					<div class="sc-field">
+						<label>State:</label>
+						<span ng-if="!editMode">{{ selectedContact.state }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class="sc-company" ng-if="selectedContact.type == 'Company'">
+
+					<!-- Company -->
+					<div class="sc-field">
+						<label>Company:</label>
+						<span ng-if="!editMode">{{ selectedContact.company }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+					</div>
+
+					<!-- Phone -->
+					<div class="sc-field">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone1 }}">{{ selectedContact.phone1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
+					</div>
+
+					<!-- Phone Two -->
+					<div class="sc-field" ng-if="selectedContact.phone1" ng-hide="!selectedContact.phone2 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone2 }}">{{ selectedContact.phone2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
+					</div>
+
+					<!-- Phone Three -->
+					<div class="sc-field" ng-if="selectedContact.phone2" ng-hide="!selectedContact.phone3 && !editMode">
+						<label>Phone:</label>
+						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone3 }}">{{ selectedContact.phone3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
+					</div>
+
+					<!-- Email -->
+					<div class="sc-field">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email1 }}">{{ selectedContact.email1 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
+					</div>
+
+					<!-- Email Two -->
+					<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email2 }}">{{ selectedContact.email2 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
+					</div>
+
+					<!-- Email Three -->
+					<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
+						<label>Email:</label>
+						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email3 }}">{{ selectedContact.email3 }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
+					</div>
+
+					<!-- Address -->
+					<div class="sc-field">
+						<label>Address:</label>
+						<span ng-if="!editMode"><a href="http://maps.google.com/?q={{ selectedContact.address }}" target="_blank">{{ selectedContact.address }}</a></span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.address">
+					</div>
+
+					<!-- State -->
+					<div class="sc-field">
+						<label>State:</label>
+						<span ng-if="!editMode">{{ selectedContact.state }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
+					</div>
+
+					<!-- Client Status -->
+					<div class="sc-field sc-status">
+						<label>Client Status:</label>
+						<span ng-if="!editMode">{{ selectedContact.status }}</span>
+						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
+						<select ng-if="editMode" ng-model="selectedContact.status">
+							<option value="Active">Active</option>
+							<option value="Inactive">Inactive</option>
+						</select>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+				<div class="sc-event" ng-if="selectedContact.type == 'Event'">
+
+					<!-- Contact Person -->
+					<div class="sc-field">
+						<label>Contact Person:</label>
 						<span ng-if="!editMode">{{ selectedContact.company }}</span>
 						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
 					</div>
@@ -246,7 +514,7 @@
 
 					<!-- Files Button -->
 
-					<div class="contact-control contact-files"><i class="fa fa-inbox fa-2x"></i></div>
+					<div class="contact-control contact-files" ng-click="toggleFiles()"><i class="fa fa-inbox fa-2x"></i></div>
 
 				</div>
 			
@@ -263,7 +531,7 @@
 
 
 
-	<div class="panel-files">
+	<div class="panel-files" ng-if="showFiles">
 		
 		<div class="panel-header">
 			FILES
@@ -271,10 +539,12 @@
 
 		<div class="panel-files-container">
 			
-			<a href="assets/files/{{ selectedContact.name }}/{{ selectedContact.files.name }}" class="file" ng-repeat="file in selectedContact.files">
-				<i class="fa fa-file fa-3x"></i>
-				<div class="file-name">{{ file.name }}</div>
-			</a>
+			<div ng-repeat="file in selectedContact.files">
+				<a href="/assets/files/{{ selectedContact.name }}/{{ file.name }}" class="file">
+					<i class="fa fa-file fa-2x"></i>
+					<div class="file-name">{{ file.name | shorten:20 }}</div>
+				</a>
+			</div>
 
 		</div>
 

@@ -61,6 +61,21 @@ a:hover
 	overflow-x hidden
 	height 100%
 	position relative
+		
+	
+// Files Panel
+
+.panel-files
+	width 150px
+	background white
+		
+	@media ( max-width: 800px ) {
+		display none
+	}
+	
+.panel-files-container
+	padding 1em
+	
 
 // Mobile View
 	
@@ -77,23 +92,6 @@ a:hover
 			
 		.contact-files
 			display none
-
-		
-	
-// Files Panel
-
-.panel-files
-	width 150px
-	background lightgrey
-	// display none
-		
-	@media ( max-width: 800px ) {
-		display none
-	}
-	
-.panel-files-container
-	padding 1em
-	
 	
 // ====================================================
 // ================== Panel Header ====================
@@ -207,7 +205,7 @@ a:hover
 .contact-buttons
 	position absolute
 	bottom 10px
-	right 0
+	right 10px
 	// right 180px
 	display flex
 	flex-direction row
@@ -426,6 +424,9 @@ a:hover
 .nv-file-over
 	border 3px dashed lighten(blue, 20%)
 	
+	.panel-files
+		display flex
+	
 
 // ====================================================
 // =================== Files Panel ====================
@@ -455,4 +456,4 @@ a:hover
 // ====================================================
 
 hr
-	margin-bottom 0
+	margin-bottom 20px
