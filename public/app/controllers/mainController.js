@@ -29,6 +29,8 @@ angular.module('app.controllers')
 
 		$scope.editMode = false;
 
+		Map
+
 	};
 
 
@@ -168,9 +170,12 @@ angular.module('app.controllers')
 
 	var myEl = angular.element( document.querySelector( '#mainApp' ) )
 
-	if(myEl.hasClass('nv-file-add')) {
+	console.log(myEl.hasClass('nv-file-add'))
 
-  		alert('has class red');
+	if( myEl.hasClass('nv-file-add') ) {
+
+		console.log(myEl.hasClass('nv-file-add'))
+
 
 	} 
 

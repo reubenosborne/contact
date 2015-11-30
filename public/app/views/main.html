@@ -18,16 +18,16 @@
 
 
 		<!-- Search -->
-		<div class="search-contacts">
+		<div class="search">
 			<i class="fa fa-search"></i>
-			<input type="search" placeholder="Search for anything..." ng-model="search"/>
+			<input class= "search-files" type="search" placeholder="Search for anything..." ng-model="searchContacts"/>
 		</div>
 
 
 		<!-- Contacts -->
 		<div class="panel-contacts-container">
 
-			<div class="contact-card" ng-repeat="contact in allContacts | filter:search | orderBy: 'name'" ng-click="setContact(contact)">
+			<div class="contact-card" ng-repeat="contact in allContacts | filter:searchContacts | orderBy: 'name'" ng-click="setContact(contact)">
 
 				<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
 					{{ contact.name.charAt(0) }}
@@ -711,13 +711,22 @@
 			FILES
 		</div>
 
+
+		<div class="search">
+			<i class="fa fa-search"></i>
+			<input class= "search-files" type="search" placeholder="Search files" ng-model="searchFiles"/>
+		</div>
+
+
 		<div class="panel-files-container">
 			
-			<div ng-repeat="file in selectedContact.files">
-				<a href="/assets/files/{{selectedContact.name}}/{{file.name}}" class="file" target='_blank'>
+			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'">
+
+				<a href="/assets/files/{{selectedContact.name}}/{{file.name}}" class="file-panel" target='_blank'>
 					<i class="fa fa-file fa-3x"></i>
 					<div>{{ file.name | shorten:20 }}</div>
 				</a>
+
 			</div>
 
 		</div>
