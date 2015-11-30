@@ -106,7 +106,7 @@ angular.module('app.controllers')
 
 	$scope.deleteContact = function() {
 
-		var result = confirm("Are you sure you want to delete this contact?");
+		var result = confirm("Are you absolutely sure you want to delete this contact?");
 		
 		if (result) {
 
@@ -157,7 +157,7 @@ angular.module('app.controllers')
 
 	// Toggle File Draw
 
-	$scope.toggleFiles = false;
+	$scope.showFiles = false
 
   	$scope.toggleFiles = function() {
 
@@ -165,6 +165,14 @@ angular.module('app.controllers')
 
   	};
 
+
+	var myEl = angular.element( document.querySelector( '#mainApp' ) )
+
+	if(myEl.hasClass('nv-file-add')) {
+
+  		alert('has class red');
+
+	} 
 
 
 })

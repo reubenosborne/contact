@@ -66,15 +66,20 @@ a:hover
 // Files Panel
 
 .panel-files
-	width 150px
-	background white
+	width 200px
+	height 100%
+	display flex
+	flex-direction column
 		
 	@media ( max-width: 800px ) {
 		display none
 	}
 	
 .panel-files-container
-	padding 1em
+	overflow scroll
+	overflow-x hidden
+	flex 1
+	padding 10px
 	
 
 // Mobile View
@@ -421,8 +426,9 @@ a:hover
 	left 30px
 	cursor pointer
 	
-.nv-file-over
-	border 3px dashed lighten(blue, 20%)
+.nv-file-over,
+.nv-file-add
+	border 2px dashed lighten(blue, 20%)
 	
 
 // ====================================================
@@ -435,12 +441,10 @@ a:hover
 	align-items center
 	justify-content center
 	margin 10px
+	font-size 10px
 	
 .fa-file
 	margin 7px 10px 10px
-	
-.file-name
-	font-size 10px
 
 
 	
