@@ -1,4 +1,4 @@
-<div class="app-container" ng-class="{'contact-selected': !!selectedContact}" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader" id="mainApp">
+<div class="app-container" ng-class="{'contact-selected': !!selectedContact}" id="mainApp">
 
 
 
@@ -76,7 +76,7 @@
 
 				<div class="info-dialogue-card">
 
-					<i class="fa fa-book fa-3x"></i>
+					<!-- <i class="fa fa-book fa-3x"></i> -->
 					
 					<h1>Welcome {{ user.name }}</h1>
 
@@ -718,7 +718,7 @@
 		</div>
 
 
-		<div class="panel-files-container">
+		<div class="panel-files-container" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader">
 			
 			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'">
 

@@ -167,6 +167,17 @@ angular.module('app.controllers')
 
   	};
 
+  	if ($scope.selectedContact) {
+
+  		if ($scope.selectedContact.files === true) {
+
+  			// $scope.showFiles = true;
+  			console.log($scope.selectedContact.files)
+
+  		};
+
+  	};
+
 
 	var myEl = angular.element( document.querySelector( '#mainApp' ) )
 

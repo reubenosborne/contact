@@ -228,7 +228,7 @@ a:hover
 	margin 5px
 	
 .contact-add
-	background green
+	background blue
 	transition .1s
 	position absolute
 	bottom 5px
@@ -236,7 +236,7 @@ a:hover
 	margin-left -25px
 	
 	&:hover
-		background darken(green, 10%)
+		background darken(blue, 10%)
 	
 	&:active
 		background green
@@ -265,12 +265,12 @@ a:hover
 		
 		
 .contact-back
-	background orange
+	background blue
 	transition .1s
 	display none
 	
 	&:hover
-		background darken(orange, 10%)
+		background darken(blue, 10%)
 		
 	&:active
 		background orange
@@ -293,14 +293,13 @@ a:hover
 	display flex
 	align-items center
 	justify-content center
-	height 300px
+	height 80vh
 	
 .info-dialogue-card
 	display flex
 	flex-direction column
 	align-items center
 	justify-content center
-	border 1px solid darkgrey
 	border-radius 5px
 	padding 30px
 
@@ -427,7 +426,8 @@ a:hover
 	
 .nv-file-over,
 .nv-file-add
-	border 2px dashed lighten(blue, 20%)
+	// border 2px dashed lighten(blue, 20%)
+	box-shadow inset 0 0 0 3px blue
 	
 
 // ====================================================
