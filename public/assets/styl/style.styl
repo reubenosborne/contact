@@ -200,7 +200,24 @@ a:hover
 		margin 0
 		font-size 13px
 		font-weight 300
-
+		
+.cc-selected
+	border-left 4px solid blue
+	transition .15s
+	
+.cc-delete
+	background red
+	transition .1s
+	display flex
+	align-items center
+	justify-content center
+	
+	
+	&:hover
+		background darken(red, 10%)
+		
+	&:active
+		background red
 
 // ====================================================
 // ================= Contact Buttons ==================
@@ -208,7 +225,7 @@ a:hover
 
 .contact-buttons
 	position absolute
-	bottom 10px
+	bottom 5px
 	right 10px
 	// right 180px
 	display flex
@@ -239,7 +256,7 @@ a:hover
 		background darken(blue, 10%)
 	
 	&:active
-		background green
+		background blue
 		
 	
 .contact-delete
@@ -253,7 +270,8 @@ a:hover
 		background red
 		
 
-.contact-edit
+.contact-edit,
+.contact-back
 	background blue
 	transition .1s
 	
@@ -265,25 +283,7 @@ a:hover
 		
 		
 .contact-back
-	background blue
-	transition .1s
 	display none
-	
-	&:hover
-		background darken(blue, 10%)
-		
-	&:active
-		background orange
-		
-.contact-files
-	background blue
-	transition .1s
-	
-	&:hover
-		background darken(blue, 10%)
-		
-	&:active
-		background blue
 	
 // ====================================================
 // ================= Info Dialogue ====================
@@ -312,7 +312,7 @@ a:hover
 // ================ Selected Contact ==================
 // ====================================================
 
-.selected-contact
+.selected-contact-info
 	margin 0
 
 // .sc will hereby replace .selected-contact

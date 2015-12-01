@@ -23,13 +23,11 @@ angular.module('app.controllers')
 
 	$scope.setContact = function(contact) {
 
-		$scope.saveContact();
+		$scope.saveContact()
 
-		$scope.selectedContact = contact;
+		$scope.selectedContact = contact
 
-		$scope.editMode = false;
-
-		Map
+		$scope.editMode = false
 
 	};
 
@@ -44,6 +42,8 @@ angular.module('app.controllers')
 		$scope.selectedContact = undefined;
 		
 	}
+
+
 
 
 
@@ -78,7 +78,9 @@ angular.module('app.controllers')
     	$scope.editMode = !$scope.editMode;
 
     	if(!$scope.editMode) {
+
     		$scope.saveContact();
+
     	}
 
   	};
@@ -89,6 +91,7 @@ angular.module('app.controllers')
   	// Save Contact
 
   	$scope.saveContact = function() {
+
   		if(!$scope.selectedContact) return
   			
   		if($scope.selectedContact.id) {
@@ -124,6 +127,38 @@ angular.module('app.controllers')
 	};
 
 
+	// Set File
+
+	$scope.selectFile = function(file) {
+
+		$scope.selectedFile = file;
+		console.log($scope.selectedFile)
+
+	};
+
+
+
+	// Delete File
+
+	$scope.deleteFile = function() {
+
+		var result = confirm("Are you absolutely sure you want to delete this file?");
+		
+		if (result) {
+
+			$scope.selectedFile.$delete(function() {
+
+				$scope.allFiles = _.reject($scope.allFiles, function(file) {
+					return file.id === $scope.selectedFile.id;
+				})
+
+				$scope.selectedFile = undefined;
+
+			})
+		}
+	};
+
+
 
 
 	// Upload Avatar
@@ -138,6 +173,8 @@ angular.module('app.controllers')
 			$scope.selectedContact.avatar = res.avatar;
 		}
 	}
+
+
 
 
 	// Upload File
@@ -155,40 +192,6 @@ angular.module('app.controllers')
 			$scope.selectedContact.files.push(res);
 		}
 	}
-
-
-	// Toggle File Draw
-
-	$scope.showFiles = false
-
-  	$scope.toggleFiles = function() {
-
-    	$scope.showFiles = !$scope.showFiles;
-
-  	};
-
-  	if ($scope.selectedContact) {
-
-  		if ($scope.selectedContact.files === true) {
-
-  			// $scope.showFiles = true;
-  			console.log($scope.selectedContact.files)
-
-  		};
-
-  	};
-
-
-	var myEl = angular.element( document.querySelector( '#mainApp' ) )
-
-	console.log(myEl.hasClass('nv-file-add'))
-
-	if( myEl.hasClass('nv-file-add') ) {
-
-		console.log(myEl.hasClass('nv-file-add'))
-
-
-	} 
 
 
 })

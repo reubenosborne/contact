@@ -39,6 +39,8 @@ class ContactsController extends Controller
 
         $contact->save();
 
+        $contact = Contact::where('id', $contact->id)->with('files')->first();
+
         return $contact;
     }
 
@@ -77,6 +79,8 @@ class ContactsController extends Controller
         $contact->fill($request->all());
 
         $contact->save();
+
+        $contact = Contact::where('id', $contact->id)->with('files')->first();
 
         return $contact;
     }

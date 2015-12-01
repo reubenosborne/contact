@@ -27,13 +27,25 @@
 		<!-- Contacts -->
 		<div class="panel-contacts-container">
 
-			<div class="contact-card" ng-repeat="contact in allContacts | filter:searchContacts | orderBy: 'name'" ng-click="setContact(contact)">
+			<div ng-repeat="contact in allContacts | filter:searchContacts | orderBy: 'name'" 
+				 ng-click="setContact(contact)"
+				 ng-class="{'cc-selected': selectedContact.id === contact.id}"
+				 class="contact-card">
 
-				<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
-					{{ contact.name.charAt(0) }}
+						
+				<div ng-hide="selectedContact.id === contact.id && editMode">
+
+					<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
+						{{ contact.name.charAt(0) }}
+					</div>
+
+					<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/'+contact.avatar+')'}"></div>
+
 				</div>
 
-				<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/'+contact.avatar+')'}"></div>
+
+				<div ng-show="selectedContact.id === contact.id && editMode" class="cc-avatar cc-delete" ng-click="deleteContact(selectedContact)"><i class="fa fa-trash-o fa-2x"></i></div>
+
 			
 				<div class="cc-details">
 					<h3>{{ contact.name }}</h3>
@@ -89,7 +101,7 @@
 			
 
 			<!-- Contact Info -->
-			<div class="selected-contact" ng-if="selectedContact" ng-dblclick="editContact()">
+			<div class="selected-contact-info" ng-if="selectedContact">
 
 				<div class="sc-header">
 
@@ -97,13 +109,13 @@
 					<div class="sc-avatar">
 						
 						<!-- Avatar -->
-						<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
+						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && !editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
 						
 						<!-- Avatar & Edit Mode -->
-						<div class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
+						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-photo" ng-if="selectedContact.avatar && editMode" ng-style="{'background-image':'url(assets/img/avatars/'+selectedContact.avatar+')'}"></div>
 						
 						<!-- Initials -->
-						<div class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
+						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && !editMode">{{ selectedContact.name | initials }}</div>
 						
 						<!-- Initials & Edit Mode -->
 						<div nv-file-drop nv-file-over uploader="avatarUploader" class="sc-avatar sc-avatar-initials" ng-if="!selectedContact.avatar && editMode"><i class="fa fa-plus"></i></div>
@@ -667,7 +679,6 @@
 
 
 
-
 			
 				<div class="contact-buttons">
 
@@ -678,7 +689,7 @@
 			
 					<!-- Delete Button -->
 			
-					<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)"><i class="fa fa-times fa-2x"></i></div>
+					<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)" ng-if="editMode"><i class="fa fa-trash-o fa-2x"></i></div>
 
 					<!-- Edit Button -->
 			
@@ -686,26 +697,21 @@
 
 					<div class="contact-control contact-edit" ng-click="editContact()" ng-if="editMode"><i class="fa fa-check fa-2x"></i></div>
 
-					<!-- Files Button -->
-
-					<div class="contact-control contact-files" ng-click="toggleFiles()"><i class="fa fa-inbox fa-2x"></i></div>
 
 				</div>
+
+
+
+
 			
 			</div>
 		</div>
-
 	</div>
 
 
 
 
-
-
-
-
-
-	<div class="panel-files" ng-if="showFiles">
+	<div class="panel-files" ng-if="selectedContact">
 		
 		<div class="panel-header">
 			FILES
@@ -720,12 +726,15 @@
 
 		<div class="panel-files-container" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader">
 			
-			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'">
+			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" ng-mouseover="selectFile(file)">
 
 				<a href="/assets/files/{{selectedContact.name}}/{{file.name}}" class="file-panel" target='_blank'>
 					<i class="fa fa-file fa-3x"></i>
 					<div>{{ file.name | shorten:20 }}</div>
 				</a>
+
+				<div ng-show="selectedFile" ng-click="deleteFile(selectedFile)">Delete</div>
+
 
 			</div>
 
