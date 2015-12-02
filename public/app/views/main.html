@@ -49,10 +49,8 @@
 
 		</div>
 
-		<div class="panel-filters-control">
-			<!-- Add Contact Button -->
-			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
-		</div>
+		<!-- Add Contact Button -->
+		<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
 
 	</div>
 
@@ -537,22 +535,21 @@
 
 	<div class="panel-files" ng-if="selectedContact">
 		
+		<!-- Files Panel Header -->
 		<div class="panel-header">
 			FILES
 		</div>
 
 
+		<!-- Files Panel Search -->
 		<div class="search">
 			<i class="fa fa-search"></i>
 			<input class= "search-files" type="search" placeholder="Search files" ng-model="searchFiles"/>
 		</div>
 
-		<div ng-if="!selectedContact.files" class="file-instruct">
-			Drag &amp; Drop Files Here
-		</div>
 
-
-		<div class="panel-files-container" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader">
+		<!-- Files -->
+		<div class="panel-files-container" nv-file-drop nv-file-select nv-file-over over-class="nv-file-add" uploader="fileUploader">
 			
 			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" class="file-panel">
 
@@ -566,7 +563,6 @@
 			</div>
 
 		</div>
-
 	</div>
 
 
