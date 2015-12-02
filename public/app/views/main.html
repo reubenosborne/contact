@@ -726,14 +726,14 @@
 
 		<div class="panel-files-container" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader">
 			
-			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" ng-mouseover="selectFile(file)">
+			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" ng-mouseover="selectFile(file)" class="file-panel">
 
 				<a href="/assets/files/{{selectedContact.name}}/{{file.name}}" class="file-panel" target='_blank'>
 					<i class="fa fa-file fa-3x"></i>
 					<div>{{ file.name | shorten:20 }}</div>
 				</a>
 
-				<div ng-show="selectedFile" ng-click="deleteFile(selectedFile)">Delete</div>
+				<i ng-show="selectedFile" ng-click="deleteFile(selectedFile)" class="fa fa-times"></i>
 
 
 			</div>

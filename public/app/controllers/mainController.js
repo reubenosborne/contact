@@ -132,7 +132,6 @@ angular.module('app.controllers')
 	$scope.selectFile = function(file) {
 
 		$scope.selectedFile = file;
-		console.log($scope.selectedFile)
 
 	};
 
