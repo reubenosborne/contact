@@ -32,19 +32,12 @@
 				 ng-class="{'cc-selected': selectedContact.id === contact.id}"
 				 class="contact-card">
 
-						
-				<div ng-hide="selectedContact.id === contact.id && editMode">
 
-					<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
-						{{ contact.name.charAt(0) }}
-					</div>
-
-					<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/'+contact.avatar+')'}"></div>
-
+				<div class="cc-avatar cc-avatar-initials" ng-if="!contact.avatar">
+					{{ contact.name.charAt(0) }}
 				</div>
 
-
-				<div ng-show="selectedContact.id === contact.id && editMode" class="cc-avatar cc-delete" ng-click="deleteContact(selectedContact)"><i class="fa fa-trash-o fa-2x"></i></div>
+				<div class="cc-avatar cc-avatar-photo" ng-if="contact.avatar" ng-style="{'background-image':'url(assets/img/avatars/'+contact.avatar+')'}"></div>
 
 			
 				<div class="cc-details">
@@ -56,10 +49,8 @@
 
 		</div>
 
-		<div class="panel-filters-control">
-			<!-- Add Contact Button -->
-			<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
-		</div>
+		<!-- Add Contact Button -->
+		<div class="contact-control contact-add" ng-click="addContact()"><i class="fa fa-plus fa-2x"></i></div>
 
 	</div>
 
@@ -160,8 +151,6 @@
 					<select ng-if="editMode" ng-model="selectedContact.type">
 						<option value="Client">Client</option>
 						<option value="Prospect">Prospect</option>
-						<option value="Referral">Referral</option>
-						<option value="Supplier">Supplier</option>
 						<option value="Company">Company</option>
 						<option value="Event">Event</option>
 					</select>
@@ -247,7 +236,6 @@
 					<div class="sc-field sc-status">
 						<label>Client Status:</label>
 						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
 						<select ng-if="editMode" ng-model="selectedContact.status">
 							<option value="Active">Active</option>
 							<option value="Inactive">Inactive</option>
@@ -332,7 +320,6 @@
 					<div class="sc-field sc-status">
 						<label>Client Status:</label>
 						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
 						<select ng-if="editMode" ng-model="selectedContact.status">
 							<option value="Active">Active</option>
 							<option value="Inactive">Inactive</option>
@@ -340,169 +327,6 @@
 					</div>
 
 				</div>
-
-
-
-
-
-
-
-
-
-				<div class="sc-client" ng-if="selectedContact.type == 'Referral'">
-
-					<!-- Company -->
-					<div class="sc-field">
-						<label>Company:</label>
-						<span ng-if="!editMode">{{ selectedContact.company }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
-					</div>
-
-					<!-- Phone -->
-					<div class="sc-field">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone1 }}">{{ selectedContact.phone1 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
-					</div>
-
-					<!-- Phone Two -->
-					<div class="sc-field" ng-if="selectedContact.phone1" ng-hide="!selectedContact.phone2 && !editMode">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone2 }}">{{ selectedContact.phone2 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
-					</div>
-
-					<!-- Phone Three -->
-					<div class="sc-field" ng-if="selectedContact.phone2" ng-hide="!selectedContact.phone3 && !editMode">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone3 }}">{{ selectedContact.phone3 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
-					</div>
-
-					<!-- Email -->
-					<div class="sc-field">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email1 }}">{{ selectedContact.email1 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
-					</div>
-
-					<!-- Email Two -->
-					<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email2 }}">{{ selectedContact.email2 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
-					</div>
-
-					<!-- Email Three -->
-					<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email3 }}">{{ selectedContact.email3 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
-					</div>
-
-					<!-- Address -->
-					<div class="sc-field">
-						<label>Address:</label>
-						<span ng-if="!editMode"><a href="http://maps.google.com/?q={{ selectedContact.address }}" target="_blank">{{ selectedContact.address }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.address">
-					</div>
-
-					<!-- State -->
-					<div class="sc-field">
-						<label>State:</label>
-						<span ng-if="!editMode">{{ selectedContact.state }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
-					</div>
-
-					<!-- Client Status -->
-					<div class="sc-field sc-status">
-						<label>Client Status:</label>
-						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
-						<select ng-if="editMode" ng-model="selectedContact.status">
-							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
-						</select>
-					</div>
-
-				</div>
-
-
-
-
-
-
-
-
-
-
-				<div class="sc-supplier" ng-if="selectedContact.type == 'Supplier'">
-
-					<!-- Company -->
-					<div class="sc-field">
-						<label>Company:</label>
-						<span ng-if="!editMode">{{ selectedContact.company }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
-					</div>
-
-					<!-- Phone -->
-					<div class="sc-field">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone1 }}">{{ selectedContact.phone1 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone1">
-					</div>
-
-					<!-- Phone Two -->
-					<div class="sc-field" ng-if="selectedContact.phone1" ng-hide="!selectedContact.phone2 && !editMode">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone2 }}">{{ selectedContact.phone2 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone2">
-					</div>
-
-					<!-- Phone Three -->
-					<div class="sc-field" ng-if="selectedContact.phone2" ng-hide="!selectedContact.phone3 && !editMode">
-						<label>Phone:</label>
-						<span ng-if="!editMode"><a href="tel:{{ selectedContact.phone3 }}">{{ selectedContact.phone3 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.phone3">
-					</div>
-
-					<!-- Email -->
-					<div class="sc-field">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email1 }}">{{ selectedContact.email1 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email1">
-					</div>
-
-					<!-- Email Two -->
-					<div class="sc-field" ng-if="selectedContact.email1" ng-hide="!selectedContact.email2 && !editMode">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email2 }}">{{ selectedContact.email2 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email2">
-					</div>
-
-					<!-- Email Three -->
-					<div class="sc-field" ng-if="selectedContact.email2" ng-hide="!selectedContact.email3 && !editMode">
-						<label>Email:</label>
-						<span ng-if="!editMode"><a href="mailto:{{ selectedContact.email3 }}">{{ selectedContact.email3 }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.email3">
-					</div>
-
-					<!-- Address -->
-					<div class="sc-field">
-						<label>Address:</label>
-						<span ng-if="!editMode"><a href="http://maps.google.com/?q={{ selectedContact.address }}" target="_blank">{{ selectedContact.address }}</a></span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.address">
-					</div>
-
-					<!-- State -->
-					<div class="sc-field">
-						<label>State:</label>
-						<span ng-if="!editMode">{{ selectedContact.state }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
-					</div>
-
-				</div>
-
 
 
 
@@ -580,7 +404,6 @@
 					<div class="sc-field sc-status">
 						<label>Client Status:</label>
 						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
 						<select ng-if="editMode" ng-model="selectedContact.status">
 							<option value="Active">Active</option>
 							<option value="Inactive">Inactive</option>
@@ -602,10 +425,10 @@
 
 					<!-- Contact Person -->
 					<div class="sc-field">
-						<label>Contact Person:</label>
+						<label>Company:</label>
 						<span ng-if="!editMode">{{ selectedContact.company }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
-					</div>
+							<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+						</div>
 
 					<!-- Phone -->
 					<div class="sc-field">
@@ -667,7 +490,6 @@
 					<div class="sc-field sc-status">
 						<label>Client Status:</label>
 						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<!-- <input type="text" ng-if="editMode" ng-model="selectedContact.status"> -->
 						<select ng-if="editMode" ng-model="selectedContact.status">
 							<option value="Active">Active</option>
 							<option value="Inactive">Inactive</option>
@@ -686,10 +508,6 @@
 					<!-- Back Button -->
 
 					<div class="contact-control contact-back" ng-click="unselectContact()"><i class="fa fa-arrow-left fa-2x"></i></div>
-			
-					<!-- Delete Button -->
-			
-					<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)" ng-if="editMode"><i class="fa fa-trash-o fa-2x"></i></div>
 
 					<!-- Edit Button -->
 			
@@ -699,6 +517,10 @@
 
 
 				</div>
+
+				<!-- Delete Button -->
+			
+				<div class="contact-control contact-delete" ng-click="deleteContact(selectedContact)" ng-if="editMode"><i class="fa fa-trash-o fa-2x"></i></div>
 
 
 
@@ -713,33 +535,34 @@
 
 	<div class="panel-files" ng-if="selectedContact">
 		
+		<!-- Files Panel Header -->
 		<div class="panel-header">
 			FILES
 		</div>
 
 
+		<!-- Files Panel Search -->
 		<div class="search">
 			<i class="fa fa-search"></i>
 			<input class= "search-files" type="search" placeholder="Search files" ng-model="searchFiles"/>
 		</div>
 
 
-		<div class="panel-files-container" nv-file-drop nv-file-over over-class="nv-file-add" uploader="fileUploader">
+		<!-- Files -->
+		<div class="panel-files-container" nv-file-drop nv-file-select nv-file-over over-class="nv-file-add" uploader="fileUploader">
 			
-			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" ng-mouseover="selectFile(file)" class="file-panel">
+			<div ng-repeat="file in selectedContact.files | filter:searchFiles | orderBy: 'name'" class="file-panel">
 
 				<a href="/assets/files/{{selectedContact.name}}/{{file.name}}" class="file-panel" target='_blank'>
-					<i class="fa fa-file fa-3x"></i>
-					<div>{{ file.name | shorten:20 }}</div>
+					<i class="fa fa-file fa-4x"></i>
+					<div>{{ file.name | shorten:15 }}</div>
 				</a>
 
-				<i ng-show="selectedFile" ng-click="deleteFile(selectedFile)" class="fa fa-times"></i>
-
+				<div ng-if="editMode" ng-click="deleteFile(file)" class="delete-button"><i class="fa fa-times"></i></div>
 
 			</div>
 
 		</div>
-
 	</div>
 
 

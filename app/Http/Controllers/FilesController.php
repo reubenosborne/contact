@@ -97,6 +97,8 @@ class FilesController extends Controller
 
         $file->delete();
 
+        unlink(public_path('assets/files/' . $file->contact->name . '/' . $file->name));
+
         return $file;
     }
 }

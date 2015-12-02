@@ -5,17 +5,12 @@ angular.module('app.controllers')
 
 	// Load User
 
-	$scope.user = User.get();
+	$scope.user = User.get()
 
 
 	// Load Contacts
 
-	$scope.allContacts = Contact.query();
-
-
-	// Load Files
-
-	$scope.allFiles = File.query();
+	$scope.allContacts = Contact.query()
 
 
 
@@ -29,7 +24,7 @@ angular.module('app.controllers')
 
 		$scope.editMode = false
 
-	};
+	}
 
 
 
@@ -39,7 +34,7 @@ angular.module('app.controllers')
 
 	$scope.unselectContact = function() {
 		
-		$scope.selectedContact = undefined;
+		$scope.selectedContact = undefined
 		
 	}
 
@@ -51,39 +46,39 @@ angular.module('app.controllers')
 
 	$scope.addContact = function () {
 
-		var contact = new Contact(); // Create new contact
+		var contact = new Contact() // Create new contact
 
-		$scope.selectedContact = contact;
+		$scope.selectedContact = contact
 
-		$scope.editMode = true;
+		$scope.editMode = true
 
-		$scope.selectedContact.name = 'New Contact'; // Set name to the input box content
+		$scope.selectedContact.name = 'New Contact' // Set name to the input box content
 
 		// Make a callback to handle what happens when the server responds
 		contact.$save(function() {
-			$scope.allContacts.push(contact);
+			$scope.allContacts.push(contact)
 		})
 
-	};
+	}
 
 
 
 
 	// Edit Contact
 
-	$scope.editMode = false;
+	$scope.editMode = false
 
   	$scope.editContact = function() {
 
-    	$scope.editMode = !$scope.editMode;
+    	$scope.editMode = !$scope.editMode
 
     	if(!$scope.editMode) {
 
-    		$scope.saveContact();
+    		$scope.saveContact()
 
     	}
 
-  	};
+  	}
 
 
 
@@ -96,11 +91,11 @@ angular.module('app.controllers')
   			
   		if($scope.selectedContact.id) {
 
-    		$scope.selectedContact.$update();
+    		$scope.selectedContact.$update()
 
     	} else {
 
-    		$scope.selectedContact.$save();
+    		$scope.selectedContact.$save()
     	}
   	}
 
@@ -111,65 +106,56 @@ angular.module('app.controllers')
 
 	$scope.deleteContact = function() {
 
-		var result = confirm("Are you absolutely sure you want to delete this contact?");
+		var result = confirm("Are you absolutely sure you want to delete this contact?")
 		
 		if (result) {
 
 			$scope.selectedContact.$delete(function() {
 
 				$scope.allContacts = _.reject($scope.allContacts, function(contact) {
-					return contact.id === $scope.selectedContact.id;
+					return contact.id === $scope.selectedContact.id
 				})
 
-				$scope.selectedContact = undefined;
+				$scope.selectedContact = undefined
 			})
 		}
-	};
-
-
-	// Set File
-
-	$scope.selectFile = function(file) {
-
-		$scope.selectedFile = file;
-
-	};
+	}
 
 
 
 	// Delete File
 
-	$scope.deleteFile = function() {
+	$scope.deleteFile = function(file) {
 
-		var result = confirm("Are you absolutely sure you want to delete this file?");
+		var result = confirm("Are you absolutely sure you want to delete this file?")
 		
 		if (result) {
 
-			$scope.selectedFile.$delete(function() {
+			File.delete(file, function() {
 
-				$scope.allFiles = _.reject($scope.allFiles, function(file) {
-					return file.id === $scope.selectedFile.id;
+				$scope.selectedContact.files = _.reject($scope.selectedContact.files, function(f) {
+					return f.id === file.id
 				})
 
-				$scope.selectedFile = undefined;
+
 
 			})
 		}
-	};
+	}
 
 
 
 
 	// Upload Avatar
 
-	$scope.avatarUploader = new FileUploader();
+	$scope.avatarUploader = new FileUploader()
 
 	$scope.avatarUploader.onAfterAddingFile = function(item) {
-		item.url = '/avatar/upload/' + $scope.selectedContact.id;
-		item.upload();
+		item.url = '/avatar/upload/' + $scope.selectedContact.id
+		item.upload()
 
 		item.onComplete = function (res) {
-			$scope.selectedContact.avatar = res.avatar;
+			$scope.selectedContact.avatar = res.avatar
 		}
 	}
 
@@ -178,17 +164,17 @@ angular.module('app.controllers')
 
 	// Upload File
 
-	$scope.fileUploader = new FileUploader();
+	$scope.fileUploader = new FileUploader()
 
 	$scope.fileUploader.onAfterAddingFile = function(item) {
 
-		if ($scope.editMode) {return} // escape
+		// if ($scope.editMode) {return} // escape
 
-		item.url = '/file/upload/' + $scope.selectedContact.id;
-		item.upload();
+		item.url = '/file/upload/' + $scope.selectedContact.id
+		item.upload()
 
 		item.onComplete = function (res) {
-			$scope.selectedContact.files.push(res);
+			$scope.selectedContact.files.push(res)
 		}
 	}
 
