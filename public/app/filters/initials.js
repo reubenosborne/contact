@@ -11,7 +11,7 @@ angular.module('app.filters')
 			initials.push(words[i].charAt(0))
 		}
 
-		return initials.join(' ').toUpperCase()
+		return initials[0] + ' ' + initials[initials.length-1]
 
 	}
 })
