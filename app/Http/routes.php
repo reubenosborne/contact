@@ -27,7 +27,7 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes - Delete when ready
+// Registration routes - Remove when registered
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
@@ -62,7 +62,7 @@ Route::post('avatar/upload/{id}', function(Request $request, $id) {
 
 });
 
-//Upload Avatars
+//Upload Files
 Route::post('file/upload/{id}', function(Request $request, $id) {
 
 	$file = new File();

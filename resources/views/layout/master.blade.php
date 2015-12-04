@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Contacts</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/public/dist/style.min.css">
+	<link rel="stylesheet" href="/dist/style.min.css">
 </head>
 <body>
 

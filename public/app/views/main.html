@@ -137,7 +137,7 @@
 
 				<!-- Contact Type -->
 				<div class="sc-field sc-type">
-					<label>Type</label>
+					<label>Type:</label>
 					<span ng-if="!editMode">{{ selectedContact.type }}</span>
 					<select ng-if="editMode" ng-model="selectedContact.type">
 						<option value="Client">Client</option>
@@ -151,6 +151,17 @@
 
 
 				<div ng-if="selectedContact.type == 'Client'" class="sc-client">
+
+
+					<!-- Status -->
+					<div class="sc-field sc-status">
+						<label>Status:</label>
+						<span ng-if="!editMode">{{ selectedContact.status }}</span>
+						<select ng-if="editMode" ng-model="selectedContact.status">
+							<option value="Active">Active</option>
+							<option value="Inactive">Inactive</option>
+						</select>
+					</div>
 
 					<!-- Company -->
 					<div class="sc-field">
@@ -215,16 +226,6 @@
 						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
 					</div>
 
-					<!-- Client Status -->
-					<div class="sc-field sc-status">
-						<label>Client Status:</label>
-						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<select ng-if="editMode" ng-model="selectedContact.status">
-							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
-						</select>
-					</div>
-
 				</div>
 
 
@@ -233,11 +234,12 @@
 
 				<div class="sc-company" ng-if="selectedContact.type == 'Company'">
 
-					<!-- Company -->
+
+					<!-- Contact Person -->
 					<div class="sc-field">
-						<label>Company:</label>
-						<span ng-if="!editMode">{{ selectedContact.company }}</span>
-						<input type="text" ng-if="editMode" ng-model="selectedContact.company">
+						<label>Contact:</label>
+						<span ng-if="!editMode">{{ selectedContact.contactPerson }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.contactPerson">
 					</div>
 
 					<!-- Phone -->
@@ -296,15 +298,13 @@
 						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
 					</div>
 
-					<!-- Client Status -->
-					<div class="sc-field sc-status">
-						<label>Client Status:</label>
-						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<select ng-if="editMode" ng-model="selectedContact.status">
-							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
-						</select>
+					<!-- Notes -->
+					<div class="sc-field">
+						<label>Notes:</label>
+						<span ng-if="!editMode">{{ selectedContact.notes }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.notes">
 					</div>
+
 
 				</div>
 
@@ -314,12 +314,27 @@
 
 				<div class="sc-event" ng-if="selectedContact.type == 'Event'">
 
+
+					<!-- Event Start -->
+					<div class="sc-field">
+						<label>Event Start:</label>
+						<span ng-if="!editMode">{{ selectedContact.eventStart }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.eventStart">
+					</div>
+
+					<!-- Event End -->
+					<div class="sc-field">
+						<label>Event End:</label>
+						<span ng-if="!editMode">{{ selectedContact.eventEnd }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.eventEnd">
+					</div>
+
 					<!-- Contact Person -->
 					<div class="sc-field">
-						<label>Company:</label>
-						<span ng-if="!editMode">{{ selectedContact.company }}</span>
-							<input type="text" ng-if="editMode" ng-model="selectedContact.company">
-						</div>
+						<label>Contact:</label>
+						<span ng-if="!editMode">{{ selectedContact.contactPerson }}</span>
+						<input type="text" ng-if="editMode" ng-model="selectedContact.contactPerson">
+					</div>
 
 					<!-- Phone -->
 					<div class="sc-field">
@@ -377,15 +392,6 @@
 						<input type="text" ng-if="editMode" ng-model="selectedContact.state">
 					</div>
 
-					<!-- Client Status -->
-					<div class="sc-field sc-status">
-						<label>Client Status:</label>
-						<span ng-if="!editMode">{{ selectedContact.status }}</span>
-						<select ng-if="editMode" ng-model="selectedContact.status">
-							<option value="Active">Active</option>
-							<option value="Inactive">Inactive</option>
-						</select>
-					</div>
 				</div>
 
 
@@ -395,7 +401,7 @@
 				<div class="contact-buttons">
 
 					<!-- Back Button -->
-					<div ng-click="unselectContact()"><i class="fa fa-arrow-left fa-2x" class="contact-control contact-back"></i></div>
+					<div ng-click="unselectContact()" class="contact-control contact-back"><i class="fa fa-arrow-left fa-2x"></i></div>
 
 					<!-- Edit Button -->
 					<div ng-click="editContact()" ng-if="!editMode" class="contact-control contact-edit"><i class="fa fa-pencil fa-2x"></i></div>
@@ -447,7 +453,7 @@
 			</div>
 		</div>
 
-		
+
 	</div>
 
 
