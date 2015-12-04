@@ -11,7 +11,11 @@ angular.module('app.filters')
 			initials.push(words[i].charAt(0))
 		}
 
-		return initials[0] + ' ' + initials[initials.length-1]
+		if (words.length > 1) {
+			return initials[0] + ' ' + initials[initials.length-1]
+		} else {
+			return initials[0]
+		}
 
 	}
 })

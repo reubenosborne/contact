@@ -63,7 +63,7 @@
 
 
 						<p>Email: test@email.com</p>
-						<p>Password: testpw</p>
+						<p>Password: password</p>
 
 			</div>
 
