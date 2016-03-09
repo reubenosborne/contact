@@ -60,11 +60,6 @@
 
 					</div>
 				</div>
-
-
-						<p>Email: test@email.com</p>
-						<p>Password: password</p>
-
 			</div>
 
 		</div>
